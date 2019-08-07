@@ -5871,6 +5871,13 @@ namespace ArcShapeFile
             {
                 string[] codelines=File.ReadAllLines(filename.Substring(0, filename.Length - 3) + "cpg");
                 mvarcodepage = codelines[0];
+                // Make sure that the ISO code pages are of the correct format
+                if (mvarcodepage.ToUpper().StartsWith("ISO") && !mvarcodepage.ToUpper().StartsWith("ISO-"))
+                {
+                    mvarcodepage = "iso-" + mvarcodepage.Substring(3).Trim();
+                    if ((mvarcodepage.StartsWith("iso-8859") && mvarcodepage.Length > 8) && !mvarcodepage.StartsWith("iso-8859-"))
+                        mvarcodepage = "iso-8859-" + mvarcodepage.Substring(8);
+                }
             }
 
             if (!isNew)
