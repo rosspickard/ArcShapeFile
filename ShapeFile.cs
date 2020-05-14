@@ -4842,7 +4842,7 @@ namespace ArcShapeFile
             if (string.IsNullOrEmpty(mvarcodepage))
                 sAns = Encoding.GetEncoding(GetCodePageName(mvarLanguage)).GetString(ByteArray);
             else
-                sAns = Encoding.GetEncoding(mvarcodepage).GetString(ByteArray);
+                sAns = Encoding.GetEncoding(Convert.ToInt32(mvarcodepage)).GetString(ByteArray);
             return sAns.Replace("\0","");
         }
 
