@@ -934,20 +934,25 @@ namespace ArcShapeFile
                         if (lvarShapeType == eShapeType.shpPointZ)
                         {
                             lvarZCord = BitConverter.ToDouble(vertData, 20);
-                            lvarMeasure = BitConverter.ToDouble(vertData, 28);
-                            if (lvarMeasure <= -1E+38)
-                            {
-                                lvarMeasure = null;
-                            }
-
+                            if (vertData.Length > 20)
+			    {
+				    lvarMeasure = BitConverter.ToDouble(vertData, 28);
+				    if (lvarMeasure <= -1E+38)
+				    {
+					lvarMeasure = null;
+				    }
+			    }
                         }
                         if (lvarShapeType == eShapeType.shpPointM)
                         {
                             lvarM = BitConverter.ToDouble(vertData, 20);
-                            if (lvarM > -1E+38)
+                            if (vertData.Length > 20)
                             {
-                                lvarMeasure = lvarM;
-                            }
+				    if (lvarM > -1E+38)
+				    {
+					lvarMeasure = lvarM;
+				    }
+			    }
                         }
 
                         break;
@@ -966,10 +971,13 @@ namespace ArcShapeFile
                             lvarZCord = BitConverter.ToDouble(vertData, ArrayPos);
                             ArrayPos = 72 + (mvarNoOfPoints * 24) + (Index * 8);
                             lvarM = BitConverter.ToDouble(vertData, ArrayPos);
-                            if (lvarM > -1E+38)
+                            if (ArrayPos < vertData.Length)
                             {
-                                lvarMeasure = lvarM;
-                            }
+				    if (lvarM > -1E+38)
+				    {
+					lvarMeasure = lvarM;
+				    }
+			    }
                         }
                         if (lvarShapeType == eShapeType.shpMultiPointM)
                         {
@@ -1005,11 +1013,14 @@ namespace ArcShapeFile
                             ArrayPos = 60 + (lvarNoOfParts * 4) + (mvarNoOfPoints * 16) + (Index * 8);
                             lvarZCord = BitConverter.ToDouble(vertData, ArrayPos);
                             ArrayPos = 76 + (lvarNoOfParts * 4) + (mvarNoOfPoints * 24) + (Index * 8);
-                            lvarM = BitConverter.ToDouble(vertData, ArrayPos);
-                            if (lvarM > -1E+38)
-                            {
-                                lvarMeasure = lvarM;
-                            }
+                            if (ArrayPos < vertData.Length)
+			    {
+				    lvarM = BitConverter.ToDouble(vertData, ArrayPos);
+				    if (lvarM > -1E+38)
+				    {
+					lvarMeasure = lvarM;
+				    }
+			    }
                         }
                         if (lvarShapeType == eShapeType.shpPolyLineM | lvarShapeType == eShapeType.shpPolygonM)
                         {
