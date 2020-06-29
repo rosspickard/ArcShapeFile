@@ -4839,10 +4839,15 @@ namespace ArcShapeFile
             // * Convert the Byte array to it's string value      *
             // ****************************************************
             string sAns = "";
+
             if (string.IsNullOrEmpty(mvarcodepage))
                 sAns = Encoding.GetEncoding(GetCodePageName(mvarLanguage)).GetString(ByteArray);
-            else
+            else  if(mvarcodepage=="UTF-8")
+                sAns =Encoding.UTF8.GetString(ByteArray);
+            else if(IsNumeric(mvarcodepage))
                 sAns = Encoding.GetEncoding(Convert.ToInt32(mvarcodepage)).GetString(ByteArray);
+            else
+                sAns = Encoding.GetEncoding(GetCodePageName(mvarLanguage)).GetString(ByteArray);
             return sAns.Replace("\0","");
         }
 
