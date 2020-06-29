@@ -547,14 +547,14 @@ namespace ArcShapeFile
         /// <param name="WKT">The Well Known Text.</param>
         public void Add(string WKT)
         {
-            WKT=WKT.Trim();
+            WKT = WKT.Trim();
             if (!WKT.Contains("EMPTY") || WKT.Contains("()"))
             {
-                    bool hasZ = false, hasM = false;
-                    if(WKT.Contains(" M") || WKT.Contains(" ZM"))
-                        hasM=true;
-                    if (WKT.Contains(" Z") || WKT.Contains(" ZM"))
-                        hasZ = true;
+                bool hasZ = false, hasM = false;
+                if (WKT.Contains(" M") || WKT.Contains(" ZM"))
+                    hasM = true;
+                if (WKT.Contains(" Z") || WKT.Contains(" ZM"))
+                    hasZ = true;
 
                 if (WKT.StartsWith("POINT"))
                 {
@@ -562,19 +562,19 @@ namespace ArcShapeFile
                     WKT = WKT.Replace("(", "").Trim();
                     WKT = WKT.Replace(")", "").Trim();
                     string[] bits = WKT.Split(' ');
-                    double x = Convert.ToDouble(bits[0].Trim()), y = Convert.ToDouble(bits[1].Trim());
+                    double x = Convert.ToDouble(bits[0].Trim(), System.Globalization.CultureInfo.InvariantCulture), y = Convert.ToDouble(bits[1].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                     double? z = nullValue, m = nullValue;
                     if (hasZ && hasM)
                     {
-                        z = Convert.ToDouble(bits[2].Trim());
-                        m = Convert.ToDouble(bits[3].Trim());
+                        z = Convert.ToDouble(bits[2].Trim(), System.Globalization.CultureInfo.InvariantCulture);
+                        m = Convert.ToDouble(bits[3].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                     }
                     else
-                    { 
-                        if(hasZ)
-                            z = Convert.ToDouble(bits[3].Trim());
+                    {
+                        if (hasZ)
+                            z = Convert.ToDouble(bits[3].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                         if (hasM)
-                            m = Convert.ToDouble(bits[3].Trim());
+                            m = Convert.ToDouble(bits[3].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                     }
                     AddVertice(x, y, m, z, -1);
                 }
@@ -587,20 +587,20 @@ namespace ArcShapeFile
                     string[] coords = WKT.Split(',');
                     foreach (string coord in coords)
                     {
-                        string[] bits = coord.Split(' ');
-                        double x = Convert.ToDouble(bits[0].Trim()), y = Convert.ToDouble(bits[1].Trim());
+                        string[] bits = coord.Trim().Split(' ');
+                        double x = Convert.ToDouble(bits[0].Trim(), System.Globalization.CultureInfo.InvariantCulture), y = Convert.ToDouble(bits[1].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                         double? z = nullValue, m = nullValue;
                         if (hasZ && hasM)
                         {
-                            z = Convert.ToDouble(bits[2].Trim());
-                            m = Convert.ToDouble(bits[3].Trim());
+                            z = Convert.ToDouble(bits[2].Trim(), System.Globalization.CultureInfo.InvariantCulture);
+                            m = Convert.ToDouble(bits[3].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                         }
                         else
                         {
                             if (hasZ)
-                                z = Convert.ToDouble(bits[3].Trim());
+                                z = Convert.ToDouble(bits[3].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                             if (hasM)
-                                m = Convert.ToDouble(bits[3].Trim());
+                                m = Convert.ToDouble(bits[3].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                         }
                         AddVertice(x, y, m, z, -1);
                     }
@@ -608,10 +608,14 @@ namespace ArcShapeFile
                 else if (WKT.StartsWith("POLYGON") || WKT.StartsWith("MULTILINE") || WKT.StartsWith("MULTIPOLYGON"))
                 {
                     WKT = WKT.Substring(WKT.IndexOf("("));
+                    WKT = WKT.Replace("), (", "),(").Trim();
+
                     if (WKT.Contains("),("))
                     {
-                        string[] parts = WKT.Split("),(".ToCharArray());
-                        for (int i = 0; i > parts.Length; i++)
+                        //string[] parts = WKT.Split("),(".ToCharArray());
+                        string[] separatingStrings = { "), (", "),(" };
+                        string[] parts = WKT.Split(separatingStrings, System.StringSplitOptions.RemoveEmptyEntries);
+                        for (int i = 0; i < parts.Length; i++)
                         {
                             if (i > 0)
                                 NewPart();
@@ -621,25 +625,26 @@ namespace ArcShapeFile
                             string[] coords = parts[i].Split(',');
                             foreach (string coord in coords)
                             {
-                                string[] bits = coord.Split(' ');
-                                double x = Convert.ToDouble(bits[0].Trim()), y = Convert.ToDouble(bits[1].Trim());
+                                string[] bits = coord.Trim().Split(' ');
+                                double x = Convert.ToDouble(bits[0].Trim(), System.Globalization.CultureInfo.InvariantCulture), y = Convert.ToDouble(bits[1].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                                 double? z = nullValue, m = nullValue;
                                 if (hasZ && hasM)
                                 {
-                                    z = Convert.ToDouble(bits[2].Trim());
-                                    m = Convert.ToDouble(bits[3].Trim());
+                                    z = Convert.ToDouble(bits[2].Trim(), System.Globalization.CultureInfo.InvariantCulture);
+                                    m = Convert.ToDouble(bits[3].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                                 }
                                 else
                                 {
                                     if (hasZ)
-                                        z = Convert.ToDouble(bits[3].Trim());
+                                        z = Convert.ToDouble(bits[3].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                                     if (hasM)
-                                        m = Convert.ToDouble(bits[3].Trim());
+                                        m = Convert.ToDouble(bits[3].Trim(), System.Globalization.CultureInfo.InvariantCulture);
                                 }
                                 AddVertice(x, y, m, z, -1);
                             }
                         }
                     }
+
                 }
             }
         }
