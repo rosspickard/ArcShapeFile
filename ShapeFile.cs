@@ -4575,29 +4575,29 @@ namespace ArcShapeFile
     {
         ///<summary>Greenwich Prime Meridian</summary>
         Greenwich = 8901,
-        ///<summary>Athens Prime Meridian 23째25'33.17" E</summary>
+        ///<summary>Athens Prime Meridian 23�25'33.17" E</summary>
         Athens = 8912,
-        ///<summary>Bern Prime Meridian 7째15'44.1" E</summary>
+        ///<summary>Bern Prime Meridian 7�15'44.1" E</summary>
         Bern = 8907,
-        ///<summary>Bogota Prime Meridian 74째2'42.47" W</summary>
+        ///<summary>Bogota Prime Meridian 74�2'42.47" W</summary>
         Bogota = 8904,
-        ///<summary>Brussels Prime Meridian 4째13'13.7" E</summary>
+        ///<summary>Brussels Prime Meridian 4�13'13.7" E</summary>
         Brussels = 8910,
-        ///<summary>Ferro Prime Meridian 17째24'0" W </summary>
+        ///<summary>Ferro Prime Meridian 17�24'0" W </summary>
         Ferro = 8909,
-        ///<summary>Jakarta Prime Meridian 106째28'58" E</summary>
+        ///<summary>Jakarta Prime Meridian 106�28'58" E</summary>
         Jakarta = 8908,
-        ///<summary>Lisbon Prime Meridian 9째4'31.75" W</summary>
+        ///<summary>Lisbon Prime Meridian 9�4'31.75" W</summary>
         Lisbon = 8902,
-        ///<summary>Madrid Prime Meridian 3째24'41.97" W</summary>
+        ///<summary>Madrid Prime Meridian 3�24'41.97" W</summary>
         Madrid = 8905,
-        ///<summary>Oslo Prime Meridian 10째25'56.1" E </summary>
+        ///<summary>Oslo Prime Meridian 10�25'56.1" E </summary>
         Oslo = 8913,
-        ///<summary>Paris Prime Meridian 2째20'14.025" W</summary>
+        ///<summary>Paris Prime Meridian 2�20'14.025" W</summary>
         Paris = 8903,
-        ///<summary>Rome Prime Meridian 2째12'5.02" E" E</summary>
+        ///<summary>Rome Prime Meridian 2�12'5.02" E" E</summary>
         Rome = 8906,
-        ///<summary>Stockholm Prime Meridian 18째1'58.73" E </summary>
+        ///<summary>Stockholm Prime Meridian 18�1'58.73" E </summary>
         Stockholm = 8911
     }
 
@@ -4644,7 +4644,6 @@ namespace ArcShapeFile
         private string mvardbfDelimiter;
         private bool mvarYYYYMMDD = true;
         private string mvarcodepage = null;
-
 
         // Area and Centriod
         private double? mvarShapeArea;
@@ -4830,6 +4829,7 @@ namespace ArcShapeFile
                 DataBytes = System.Text.Encoding.GetEncoding(GetCodePageName(mvarLanguage)).GetBytes(str);
             else
                 DataBytes = System.Text.Encoding.GetEncoding(mvarcodepage).GetBytes(str);
+
             return DataBytes;
         }
 
@@ -4848,8 +4848,18 @@ namespace ArcShapeFile
                 sAns = Encoding.GetEncoding(Convert.ToInt32(mvarcodepage)).GetString(ByteArray);
             else
                 sAns = Encoding.GetEncoding(GetCodePageName(mvarLanguage)).GetString(ByteArray);
+
+
             return sAns.Replace("\0","");
         }
+
+        private bool IsNumeric(string theValue)
+        //Is the String Numeric?
+        {
+            double dbl;
+            return Double.TryParse(theValue, out dbl);
+        }
+
 
         #endregion
 
@@ -4878,16 +4888,22 @@ namespace ArcShapeFile
                     using (StreamReader reader = new StreamReader(nStream))
                     {
                         string projData = reader.ReadToEnd();
-                        string[] projLines = projData.Split('\n');
+                        string[] projLines = projData.Split(new [] { Environment.NewLine },StringSplitOptions.RemoveEmptyEntries);
                         foreach (string projLine in projLines)
                         {
                             string[] data = projLine.Split('\t');
-                            System.Data.DataRow nRow = mvarProjTable.NewRow();
-                            nRow[0] = Convert.ToInt32(data[0]);
-                            nRow[1] = "Projcs";
-                            nRow[2] = data[1];
-                            nRow[3] = data[2];
-                            mvarProjTable.Rows.Add(nRow);
+                            try
+                            {
+                                System.Diagnostics.Debug.WriteLine("Loading proj "+ data[0] + " wkt: " + data[2]);
+                                System.Data.DataRow nRow = mvarProjTable.NewRow();
+                                nRow[0] = Convert.ToInt32(data[0]);
+                                nRow[1] = "Projcs";
+                                nRow[2] = data[1];
+                                nRow[3] = data[2];//.Substring(data[2].Length - 1) + ",AUTHORITY[\"EPSG\",\"" + data[0] + "\"]]";
+                                mvarProjTable.Rows.Add(nRow);
+                            }
+                            catch
+                            { System.Diagnostics.Debug.WriteLine("Projcs {0} could not be loaded", data[0]); }
                         }
                     }
                 }
@@ -4901,16 +4917,22 @@ namespace ArcShapeFile
                     using (StreamReader reader = new StreamReader(nStream))
                     {
                         string projData = reader.ReadToEnd();
-                        string[] projLines = projData.Split('\n');
+                        string[] projLines = projData.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
                         foreach (string projLine in projLines)
                         {
                             string[] data = projLine.Split('\t');
-                            System.Data.DataRow nRow = mvarProjTable.NewRow();
-                            nRow[0] = Convert.ToInt32(data[0]);
-                            nRow[1] = "Geocs";
-                            nRow[2] = data[1];
-                            nRow[3] = data[2];
-                            mvarProjTable.Rows.Add(nRow);
+                            try
+                            {
+                                System.Diagnostics.Debug.WriteLine("Loading geosc " + data[0] + " wkt: " + data[2]);
+                                System.Data.DataRow nRow = mvarProjTable.NewRow();
+                                nRow[0] = Convert.ToInt32(data[0]);
+                                nRow[1] = "Geocs";
+                                nRow[2] = data[1];
+                                nRow[3] = data[2];//.Substring(data[2].Length - 1) + ",AUTHORITY[\"EPSG\",\"" + data[0] + "\"]]";
+                                mvarProjTable.Rows.Add(nRow);
+                            }
+                            catch
+                            { System.Diagnostics.Debug.WriteLine("Geocs {0} could not be loaded", data[0]); }
                         }
                     }
                 }
@@ -5555,6 +5577,360 @@ namespace ArcShapeFile
         public bool IsRecordNull
         { get { return mvarIsNull; } }
 
+        /// <summary>
+        /// Returns the Vertices of the current records as a Well Known Test (WKT) string
+        /// </summary>
+        /// <returns></returns>
+        public string VerticesToWKT()
+        {
+            string wkt = "";
+            switch ((eShapeType)mvarShapeType)
+            {
+                case eShapeType.shpPoint:
+                    wkt = "POINT(" + mvarVertices[0].X_Cord.ToString() + " " + mvarVertices[0].Y_Cord.ToString() + ")";
+                    break;
+                case eShapeType.shpPointZ:
+                    wkt = "POINTZ(" + mvarVertices[0].X_Cord.ToString() + " " + mvarVertices[0].Y_Cord.ToString() + " " + mvarVertices[0].Z_Cord.ToString() + ")";
+                    break;
+                case eShapeType.shpPointM:
+                    wkt = "POINTZM(" + mvarVertices[0].X_Cord.ToString() + " " + mvarVertices[0].Y_Cord.ToString() + " " + mvarVertices[0].Z_Cord.ToString() + " " + mvarVertices[0].Measure.ToString() + ")";
+                    break;
+                case eShapeType.shpMultiPoint:
+                    wkt = "MULTIPOINT(";
+                    for (int i = 0; i < mvarVertices.Count; i++)
+                    {
+                        if (i > 0)
+                            wkt += ", ";
+                        wkt += "(" + mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + ")";
+                    }
+                    wkt += ")";
+                    break;
+                case eShapeType.shpMultiPointZ:
+                    wkt = "MULTIPOINTZ(";
+                    for (int i = 0; i < mvarVertices.Count; i++)
+                    {
+                        if (i > 0)
+                            wkt += ", ";
+                        wkt += "(" + mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString() + ")";
+                    }
+                    wkt += ")";
+                    break;
+                case eShapeType.shpMultiPointM:
+                    wkt = "MULTIPOINTZM(";
+                    for (int i = 0; i < mvarVertices.Count; i++)
+                    {
+                        if (i > 0)
+                            wkt += ", ";
+                        wkt += "(" + mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString() + mvarVertices[i].Measure.ToString() + ")";
+                    }
+                    wkt += ")";
+                    break;
+                case eShapeType.shpPolyLine:
+
+                    if (mvarParts.Count == 1)
+                    {
+                        wkt = "LINESTRING(";
+                        for (int i = 0; i < mvarVertices.Count; i++)
+                        {
+                            if (i > 0)
+                                wkt += ", ";
+                            wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString();
+                        }
+                        wkt += ")";
+                    }
+                    else
+                    {
+                        wkt = "MULTILINESTRING(";
+                        foreach (Part p in mvarParts)
+                        {
+                            if (wkt.EndsWith(")"))
+                                wkt += ", ";
+                            wkt += "(";
+                            for (int i = p.Begins; i <= p.Ends; i++)
+                            {
+                                if (i > p.Begins)
+                                    wkt += ", ";
+                                wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString();
+                            }
+                            wkt += ")";
+                        }
+                        wkt += ")";
+                    }
+                    break;
+                case eShapeType.shpPolyLineZ:
+
+                    if (mvarParts.Count == 1)
+                    {
+                        wkt = "LINESTRINGZ(";
+                        for (int i = 0; i < mvarVertices.Count; i++)
+                        {
+                            if (i > 0)
+                                wkt += ", ";
+                            wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString();
+                        }
+                        wkt += ")";
+                    }
+                    else
+                    {
+                        wkt = "MULTILINESTRINGZ(";
+                        foreach (Part p in mvarParts)
+                        {
+                            if (wkt.EndsWith(")"))
+                                wkt += ", ";
+                            wkt += "(";
+                            for (int i = p.Begins; i <= p.Ends; i++)
+                            {
+                                if (i > p.Begins)
+                                    wkt += ", ";
+                                wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString();
+                            }
+                            wkt += ")";
+                        }
+                        wkt += ")";
+                    }
+                    break;
+                case eShapeType.shpPolyLineM:
+
+                    if (mvarParts.Count == 1)
+                    {
+                        wkt = "LINESTRINGZM(";
+                        for (int i = 0; i < mvarVertices.Count; i++)
+                        {
+                            if (i > 0)
+                                wkt += ", ";
+                            wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString() + mvarVertices[i].Measure.ToString();
+                        }
+                        wkt += ")";
+                    }
+                    else
+                    {
+                        wkt = "MULTILINESTRINGZM(";
+                        foreach (Part p in mvarParts)
+                        {
+                            if (wkt.EndsWith(")"))
+                                wkt += ", ";
+                            wkt += "(";
+                            for (int i = p.Begins; i <= p.Ends; i++)
+                            {
+                                if (i > p.Begins)
+                                    wkt += ", ";
+                                wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString() + mvarVertices[i].Measure.ToString();
+                            }
+                            wkt += ")";
+                        }
+                        wkt += ")";
+                    }
+                    break;
+                case eShapeType.shpPolygon:
+                    {
+                        // how many outer rings are there
+                        int outer = 0;
+                        foreach (Part p in mvarParts)
+                        {
+                            if (!p.IsHole)
+                                outer++;
+                        }
+
+                        if (outer == 1)
+                        {
+                            wkt = "POLYGON(";
+                            foreach (Part p in mvarParts)
+                            {
+
+                                if(p.Begins>1)
+                                    wkt += ",";
+                                wkt += "(";
+                                for (int i = p.Begins; i <= p.Ends; i++)
+                                {
+                                    if (i > p.Begins)
+                                        wkt += ", ";
+                                    wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString();
+                                }
+                                wkt += ")";
+                            }
+                            wkt += ")";
+                        }
+                        else
+                        {
+                            wkt = "MULTIPOLYGON(";
+                            foreach (Part p in mvarParts)
+                            {
+                                if (!p.IsHole)
+                                {
+                                if (wkt.EndsWith(")"))
+                                    wkt += ", ";
+                                    wkt += "((";
+                                    for (int i = p.Begins; i <= p.Ends; i++)
+                                    {
+                                        if (i > p.Begins)
+                                            wkt += ", ";
+                                        wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString();
+                                    }
+                                    wkt += ")";
+                                    foreach (Part q in mvarParts)
+                                    {
+                                        if (q.IsHole)
+                                        {
+                                            if (PointInPolygon(mvarVertices[q.Begins].X_Cord, mvarVertices[q.Begins].Y_Cord, p.Begins, p.Ends))
+                                            {
+                                                if (!wkt.EndsWith(")"))
+                                                    wkt += ")";
+                                                wkt += ", (";
+                                                for (int i = q.Begins; i <= q.Ends; i++)
+                                                {
+                                                    if (i > q.Begins)
+                                                        wkt += ", ";
+                                                    wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString();
+                                                }
+                                                wkt += ")";
+                                            }
+                                        }
+                                    }
+                                    wkt += ")";
+                                }
+                            }
+                            wkt += ")";
+                        }
+                    }
+                    break;
+                case eShapeType.shpPolygonZ:
+                    {
+                        // how many outer rings are there
+                        int outer = 0;
+                        foreach (Part p in mvarParts)
+                        {
+                            if (!p.IsHole)
+                                outer++;
+                        }
+
+                        if (outer == 1)
+                        {
+                            wkt = "POLYGONZ(";
+                            foreach (Part p in mvarParts)
+                            {
+                                wkt += "(";
+                                for (int i = p.Begins; i <= p.Ends; i++)
+                                {
+                                    if (i > p.Begins)
+                                        wkt += ", ";
+                                    wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString();
+                                }
+                                wkt += ")";
+                            }
+                            wkt += ")";
+                        }
+                        else
+                        {
+                            wkt = "MULTIPOLYGONZ(";
+                            foreach (Part p in mvarParts)
+                            {
+                                if (wkt.EndsWith(")"))
+                                    wkt += ", ";
+                                if (!p.IsHole)
+                                {
+                                    wkt += "((";
+                                    for (int i = p.Begins; i <= p.Ends; i++)
+                                    {
+                                        if (i > p.Begins)
+                                            wkt += ", ";
+                                        wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString();
+                                    }
+                                    foreach (Part q in mvarParts)
+                                    {
+                                        if (q.IsHole)
+                                        {
+                                            if (PointInPolygon(mvarVertices[q.Begins].X_Cord, mvarVertices[q.Begins].Y_Cord, p.Begins, p.Ends))
+                                            {
+                                                wkt += ", (";
+                                                for (int i = q.Begins; i <= q.Ends; i++)
+                                                {
+                                                    if (i > q.Begins)
+                                                        wkt += ", ";
+                                                    wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString();
+                                                }
+                                                wkt += ")";
+                                            }
+                                        }
+                                    }
+                                    wkt += "))";
+                                }
+                            }
+                            wkt += ")";
+                        }
+                    }
+                    break;
+                case eShapeType.shpPolygonM:
+                    {
+                        // how many outer rings are there
+                        int outer = 0;
+                        foreach (Part p in mvarParts)
+                        {
+                            if (!p.IsHole)
+                                outer++;
+                        }
+
+                        if (outer == 1)
+                        {
+                            wkt = "POLYGONZM(";
+                            foreach (Part p in mvarParts)
+                            {
+                                wkt += "(";
+                                for (int i = p.Begins; i <= p.Ends; i++)
+                                {
+                                    if (i > p.Begins)
+                                        wkt += ", ";
+                                    wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString() + " " + mvarVertices[i].Measure.ToString();
+                                }
+                                wkt += ")";
+                            }
+                            wkt += ")";
+                        }
+                        else
+                        {
+                            wkt = "MULTIPOLYGONZM(";
+                            foreach (Part p in mvarParts)
+                            {
+                                if (wkt.EndsWith(")"))
+                                    wkt += ", ";
+                                if (!p.IsHole)
+                                {
+                                    wkt += "((";
+                                    for (int i = p.Begins; i <= p.Ends; i++)
+                                    {
+                                        if (i > p.Begins)
+                                            wkt += ", ";
+                                        wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString() + " " + mvarVertices[i].Measure.ToString();
+                                    }
+                                    foreach (Part q in mvarParts)
+                                    {
+                                        if (q.IsHole)
+                                        {
+                                            if (PointInPolygon(mvarVertices[q.Begins].X_Cord, mvarVertices[q.Begins].Y_Cord, p.Begins, p.Ends))
+                                            {
+                                                wkt += ", (";
+                                                for (int i = q.Begins; i <= q.Ends; i++)
+                                                {
+                                                    if (i > q.Begins)
+                                                        wkt += ", ";
+                                                    wkt += mvarVertices[i].X_Cord.ToString() + " " + mvarVertices[i].Y_Cord.ToString() + " " + mvarVertices[i].Z_Cord.ToString() + " " + mvarVertices[i].Measure.ToString();
+                                                }
+                                                wkt += ")";
+                                            }
+                                        }
+                                    }
+                                    wkt += "))";
+                                }
+                            }
+                            wkt += ")";
+                        }
+                    }
+                    break;
+            }
+
+
+            return wkt;
+        }
+
         #endregion
 
         #region **********          ShapeFile Methods             **********
@@ -5871,7 +6247,7 @@ namespace ArcShapeFile
             mvarShapeDBF = filename.Substring(0, filename.Length - 3) + "dbf";
             LoadDatum(filename.Substring(0, filename.Length - 3) + "prj");
 
-            // read the Codepage if it exists
+            // Codepage
             if (File.Exists(filename.Substring(0, filename.Length - 3) + "cpg"))
             {
                 string[] codelines=File.ReadAllLines(filename.Substring(0, filename.Length - 3) + "cpg");
@@ -9447,21 +9823,39 @@ namespace ArcShapeFile
             mvarDatum = new Projection();
             WKTReader mvarReader = new WKTReader();
             mvarReader.Read(wktFile);
-
+            string projname = "";
+            mvarDatum.WKT = mvarReader.Nodes[0].TagName + "[" + mvarReader.Nodes[0].InnerText + "]";
+            System.Diagnostics.Debug.Print(mvarDatum.WKT);
             if (mvarReader.Nodes[0].TagName == "PROJCS")
             {
                 mvarDatum.Type = "Projection";
                 mvarDatum.ProjCoordSystem = mvarReader.GetAttribName("PROJCS");
+                projname = mvarDatum.ProjCoordSystem;
             }
-            else if (mvarReader.Nodes[0].TagName == "PROJCS")
+            else if (mvarReader.Nodes[0].TagName == "GEOGCS")
             {
                 mvarDatum.Type = "Geographic";
                 mvarDatum.GeoCoordSystem = mvarReader.GetAttribName("GEOGCS");
+                projname = mvarDatum.GeoCoordSystem;
             }
             else
             {
                 mvarDatum.Type = "Geocentric";
                 mvarDatum.GeoCoordSystem = mvarReader.GetAttribName("GEOCCS");
+                projname = mvarDatum.GeoCoordSystem;
+            }
+
+            System.Data.DataRow[] prjRow = mvarProjTable.Select("Name='" + projname + "'");
+            if (prjRow.Length == 0)
+                prjRow = mvarProjTable.Select("WKT='" + mvarDatum.WKT + "'");
+            if (prjRow.Length == 1)
+                mvarDatum.EPSG = Convert.ToInt32(prjRow[0]["EPSG"]);
+            else if (mvarDatum.WKT.Contains("EPSG"))
+            {
+                if (mvarDatum.Type != "Projection")
+                    mvarDatum.EPSG = Convert.ToInt32(mvarReader.GetAttribValuebyName("GEOGCS", "AUTHORITY", "EPSG"));
+                else
+                    mvarDatum.EPSG = Convert.ToInt32(mvarReader.GetAttribValuebyName("PROJCS", "AUTHORITY", "EPSG"));
             }
 
             mvarDatum.Datum = mvarReader.GetAttribName("DATUM");
@@ -9470,16 +9864,84 @@ namespace ArcShapeFile
             mvarDatum.FlatteningInverse = Convert.ToDouble(mvarReader.GetAttribValuebyName("SPHEROID", mvarDatum.SpheroidName, 1));
             mvarDatum.PrimeMeridianName = mvarReader.GetAttribName("PRIMEM");
             mvarDatum.PrimeMeridian = Convert.ToDouble(mvarReader.GetAttribValuebyName("PRIMEM", mvarDatum.PrimeMeridianName, 0));
+            mvarDatum.GeoSpaceUnitName = mvarReader.GetAttribName("GEOGCS", "UNIT");
+            mvarDatum.GeoSpaceUnitSize = Convert.ToDouble(mvarReader.GetAttribValuebyName("GEOGCS", "UNIT", mvarDatum.GeoSpaceUnitName, 0));
 
-            mvarDatum.ProjectionName = mvarReader.GetAttribName("PROJECTION");
-            mvarDatum.CentralMeridian = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "CENTRAL_MERIDIAN", 0));
-            mvarDatum.FalseEast = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "FALSE_EASTING", 0));
-            mvarDatum.FalseNorth = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "FALSE_NORTHING", 0));
-            mvarDatum.LatitudeOrigin = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "LATITUDE_OF_ORIGIN", 0));
-            mvarDatum.LongitudeOrigin = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "LONGITUDE_OF_ORIGIN", 0));
-            mvarDatum.ScaleFactor = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "SCALE_FACTOR", 0));
-            mvarDatum.ProjectionUnitName = mvarReader.GetAttribName("GEOGCS", "UNIT");
-            mvarDatum.ProjectionUnitSize = Convert.ToDouble(mvarReader.GetAttribValuebyName("GEOGCS", "UNIT", mvarDatum.ProjectionUnitName, 0));
+            if (mvarDatum.Type == "Projection")
+            {
+                mvarDatum.ProjectionName = mvarReader.GetAttribName("PROJECTION");
+                mvarDatum.CentralMeridian = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "CENTRAL_MERIDIAN", 0));
+                mvarDatum.FalseEast = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "FALSE_EASTING", 0));
+                mvarDatum.FalseNorth = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "FALSE_NORTHING", 0));
+                mvarDatum.LatitudeOrigin = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "LATITUDE_OF_ORIGIN", 0));
+                mvarDatum.LongitudeOrigin = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "LONGITUDE_OF_ORIGIN", 0));
+                mvarDatum.ScaleFactor = Convert.ToDouble(mvarReader.GetAttribValuebyName("PARAMETER", "SCALE_FACTOR", 0));
+                mvarDatum.ProjectionUnitName = mvarReader.GetAttribName("PROJCS", "UNIT");
+            }
+
+            if (mvarDatum.EPSG == 0)
+            {   //Last Chance - Match against the parameters
+                if(mvarDatum.Type=="Projection")
+                    prjRow = mvarProjTable.Select("Type='projcs'");
+                else
+                    prjRow = mvarProjTable.Select("Type='geocs'");
+                foreach (System.Data.DataRow prRow in prjRow)
+                {
+                    WKTReader prjReader = new WKTReader();
+                    prjReader.LoadWKT(prRow["wkt"].ToString());
+
+                    bool match = true;
+
+                    // GEOCS values
+                    if (mvarDatum.Datum != prjReader.GetAttribName("DATUM"))
+                        match = false;
+                    if (mvarDatum.SpheroidName != prjReader.GetAttribName("SPHEROID"))
+                        match = false;
+                    WKTNodes parts = prjReader.GetNodesbyName("SPHEROID");
+                    if (mvarReader.GetAttribValuebyName("SPHEROID", mvarDatum.SpheroidName, 0) != parts[0].Attributes[0].ToString())
+                        match = false;
+                    if (mvarReader.GetAttribValuebyName("SPHEROID", mvarDatum.SpheroidName, 1) != parts[0].Attributes[1].ToString())
+                        match = false;
+                    parts = prjReader.GetNodesbyName("PRIMEM");
+                    if (mvarReader.GetAttribValuebyName("PRIMEM", mvarDatum.PrimeMeridianName, 0) != parts[0].Attributes[0].ToString())
+                        match = false;
+                    string partname = prjReader.GetAttribName("GEOGCS", "UNIT");
+
+                    parts = prjReader.GetNodesbyName("GEOGCS", "UNIT", partname);
+                    if (mvarDatum.GeoSpaceUnitName.ToUpper() != partname.ToUpper())
+                        match = false;
+
+                    if (mvarReader.GetAttribValuebyName("GEOGCS", "UNIT", mvarDatum.GeoSpaceUnitName, 0) != parts[0].Attributes[0].ToString())
+                        match = false;
+
+
+
+                    if (mvarDatum.Type == "Projection")
+                    {
+                        if (mvarReader.GetAttribValuebyName("PARAMETER", "CENTRAL_MERIDIAN", 0) != prjReader.GetAttribValuebyName("PARAMETER", "CENTRAL_MERIDIAN", 0))
+                            match = false;
+                        if (mvarReader.GetAttribValuebyName("PARAMETER", "FALSE_EASTING", 0) != prjReader.GetAttribValuebyName("PARAMETER", "FALSE_EASTING", 0))
+                            match = false;
+                        if (mvarReader.GetAttribValuebyName("PARAMETER", "FALSE_NORTHING", 0) != prjReader.GetAttribValuebyName("PARAMETER", "FALSE_NORTHING", 0))
+                            match = false;
+                        if (mvarReader.GetAttribValuebyName("PARAMETER", "LATITUDE_OF_ORIGIN", 0) != prjReader.GetAttribValuebyName("PARAMETER", "LATITUDE_OF_ORIGIN", 0))
+                            match = false;
+                        if (mvarReader.GetAttribValuebyName("PARAMETER", "LONGITUDE_OF_ORIGIN", 0) != prjReader.GetAttribValuebyName("PARAMETER", "LONGITUDE_OF_ORIGIN", 0))
+                            match = false;
+                        if (mvarReader.GetAttribValuebyName("PARAMETER", "SCALE_FACTOR", 0) != prjReader.GetAttribValuebyName("PARAMETER", "SCALE_FACTOR", 0))
+                            match = false;
+                    }
+
+                    if (match)
+                    {
+                        mvarDatum.EPSG = Convert.ToInt32(prRow["EPSG"]);
+                        break;
+                    }
+
+                }
+            }
+
+
         }
 
         private int CalcContentLength()
@@ -9937,7 +10399,7 @@ namespace ArcShapeFile
 
             if (mvarFields == null)
                 mvarFields = ReadDBFHeader(fsDataFile);
-            long FileLoc = mvarFields.HeaderLength + (mvarFields.Recordlength * (RecordNumber - 1));
+            long FileLoc = Convert.ToInt64(mvarFields.HeaderLength) + (Convert.ToInt64(mvarFields.Recordlength) * Convert.ToInt64(RecordNumber - 1));
 
             byte[] lvarDBFData = new byte[mvarFields.Recordlength];
             fsDataFile.Seek(FileLoc, SeekOrigin.Begin);
@@ -10584,7 +11046,7 @@ namespace ArcShapeFile
                                     mPart.IsHole = false;
                                 }
 
-                                System.Diagnostics.Debug.Print("Part {0}, Begins {1}, Ends {2}, Vertice Count {3}", i, mPart.Begins, mPart.Ends, mvarVertices.Count);
+                                //System.Diagnostics.Debug.Print("Part {0}, Begins {1}, Ends {2}, Vertice Count {3}", i, mPart.Begins, mPart.Ends, mvarVertices.Count);
 
                             }
 
@@ -12754,6 +13216,8 @@ namespace ArcShapeFile
                                     TestValue = TestValue.Replace(mvardbfDelimiter, mvarsysDelimiter);
                                     DataValue = DataValue.Replace(mvardbfDelimiter, mvarsysDelimiter);
                                 }
+                                else
+                                    TestValue=DataValue;
 
                                 if (TestValue.ToUpper().Contains("E"))
                                 {
@@ -13223,10 +13687,10 @@ namespace ArcShapeFile
             // * Calls FindByCoord to do the actual work, parsing the first record*
             // * number to set the ball rolling                                   *
             // ********************************************************************
-            FindbyCoord(FindX, FindY, 1, 0);
             mvarFindX = FindX;
             mvarFindY = FindY;
             mvarFindTolerance = 0;
+            FindbyCoord(FindX, FindY, 0, 0);
         }
 
         /// <summary>
@@ -14073,6 +14537,28 @@ namespace ArcShapeFile
             WritePrj(Projection);
         }
 
+        /// <summary>
+        /// Writes out a projection PRJ file for use in ESRI applications.  Not all projections are supported,
+        /// but included in the enums are those that are used in ArcGis 9
+        /// </summary>
+        /// <param name="ProjectionString">The user defined projection string</param>
+        public void WriteProjection(string ProjectionString)
+        {
+            try
+            {
+                    string filename = mvarShapeFile;
+                    filename = filename.Substring(0, filename.Length - 3) + "prj";
+                    StreamWriter prjWriter = new StreamWriter(filename);
+                    prjWriter.Write(ProjectionString);
+                    prjWriter.Flush();
+                    prjWriter.Close();
+                    prjWriter.Dispose();
+                    // Load the data back into the Projection class
+                    LoadDatum(filename);
+            }
+            catch { }
+        }
+
         private void WritePrj(int EPSGNo)
         {
             try
@@ -14086,7 +14572,8 @@ namespace ArcShapeFile
                     string filename = mvarShapeFile;
                     filename = filename.Substring(0, filename.Length - 3) + "prj";
                     StreamWriter prjWriter = new StreamWriter(filename);
-                    prjWriter.Write(prjRow[0][3]);
+                    string wkt = prjRow[0][3].ToString();
+                    prjWriter.Write(wkt);
                     prjWriter.Flush();
                     prjWriter.Close();
                     prjWriter.Dispose();
