@@ -9,93 +9,6 @@
             Contains the Database field information and data values.  As each Field object is a representation of the database field of the DBF file format there are some restrictions on both field size (maximum of 245 characters for text as memo fields are not supported) and field names (maximum of 10 characters).
             </summary>
         </member>
-        <member name="M:ArcShapeFile.Field.Modify(System.String,ArcShapeFile.eFieldType)">
-            <summary>Change the field name and type of a particular field</summary>
-             <param name="Name">The new Field name of the ShapeFile Database record</param>
-             <param name="Type">The new Type of field to be created</param>
-             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
-             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
-             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
-        </member>
-        <member name="M:ArcShapeFile.Field.Modify(System.String,ArcShapeFile.eFieldType,System.Int16)">
-            <summary>Change the field name, type and size of a particular field</summary>
-             <param name="Name">The new Field name of the ShapeFile Database record</param>
-             <param name="Type">The new Type of field to be created</param>
-             <param name="Size">The new length of the field</param>
-             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
-             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
-             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
-        </member>
-        <member name="M:ArcShapeFile.Field.Modify(System.String,ArcShapeFile.eFieldType,System.Int16,System.Int16)">
-            <summary>Change the field name, type, size and decimal placing of a particular field</summary>
-             <param name="Name">The new Field name of the ShapeFile Database record</param>
-             <param name="Type">The new Type of field to be created</param>
-             <param name="Size">The new length of the field</param>
-             <param name="Decimal">The new number of digits to be stored right of the decimal point</param>
-             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
-             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
-             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
-        </member>
-        <member name="M:ArcShapeFile.Field.Modify(System.String,System.Int16)">
-            <summary>Change the field name and size of a particular field</summary>
-             <param name="Name">The new Field name of the ShapeFile Database record</param>
-             <param name="Size">The new length of the field</param>
-             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
-             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
-             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
-        </member>
-        <member name="M:ArcShapeFile.Field.Modify(System.String)">
-            <summary>Change the field name of a particular field</summary>
-             <param name="Name">The new Field name of the ShapeFile Database record</param>
-             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
-             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
-             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
-        </member>
-        <member name="M:ArcShapeFile.Field.Modify(System.String,System.Int16,System.Int16)">
-            <summary>Change the field name, size and decimal placing of a particular field</summary>
-             <param name="Name">The new Field name of the ShapeFile Database record</param>
-             <param name="Size">The new length of the field</param>
-             <param name="Decimal">The new number of digits to be stored right of the decimal point</param>
-             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
-             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
-             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
-        </member>
-        <member name="M:ArcShapeFile.Field.Modify(ArcShapeFile.eFieldType,System.Int16,System.Int16)">
-            <summary>Change the field type, size and decimal placing of a particular field</summary>
-             <param name="Type">The new Type of field to be created</param>
-             <param name="Size">The new length of the field</param>
-             <param name="Decimal">The new number of digits to be stored right of the decimal point</param>
-             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
-             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
-             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
-        </member>
-        <member name="M:ArcShapeFile.Field.Modify(System.Int16,System.Int16)">
-            <summary>Change the field size and decimal placing of a particular field</summary>
-             <param name="Size">The new length of the field</param>
-             <param name="Decimal">The new number of digits to be stored right of the decimal point</param>
-             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
-             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
-             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
-        </member>
-        <member name="M:ArcShapeFile.Field.Modify(System.Int16)">
-            <summary>Change the field size of a particular field</summary>
-             <param name="Size">The new length of the field</param>
-             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
-             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
-             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
-        </member>
-        <member name="M:ArcShapeFile.Field.Delete">
-            <summary> Marks the field for deletion.  This will not physically occur until the Pack command is given.</summary>
-            <seealso cref="P:ArcShapeFile.Field.IsDeleted"/>
-            <seealso cref="M:ArcShapeFile.Field.UnDelete"/>
-            <seealso cref="M:ArcShapeFile.ShapeFile.Pack">Pack</seealso>
-        </member>
-        <member name="M:ArcShapeFile.Field.UnDelete">
-            <summary> Unmarks the field for deletion.  Just in case you've had second thoughts about deleting a Field.</summary>
-            <seealso cref="P:ArcShapeFile.Field.IsDeleted"/>
-            <seealso cref="M:ArcShapeFile.Field.Delete"/>
-            <seealso cref="M:ArcShapeFile.ShapeFile.Pack">Pack</seealso>
-        </member>
         <member name="P:ArcShapeFile.Field.Name">
             <summary>A string representing the name of the database field</summary>
              <remarks>
@@ -190,6 +103,93 @@
         <member name="P:ArcShapeFile.Field.Status">
             <summary>Holds the status of the field - has it been modified, deleted, etc. for use with writing modifications</summary>
         </member>
+        <member name="M:ArcShapeFile.Field.Modify(System.String,ArcShapeFile.eFieldType)">
+            <summary>Change the field name and type of a particular field</summary>
+             <param name="Name">The new Field name of the ShapeFile Database record</param>
+             <param name="Type">The new Type of field to be created</param>
+             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
+             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
+             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
+        </member>
+        <member name="M:ArcShapeFile.Field.Modify(System.String,ArcShapeFile.eFieldType,System.Int16)">
+            <summary>Change the field name, type and size of a particular field</summary>
+             <param name="Name">The new Field name of the ShapeFile Database record</param>
+             <param name="Type">The new Type of field to be created</param>
+             <param name="Size">The new length of the field</param>
+             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
+             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
+             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
+        </member>
+        <member name="M:ArcShapeFile.Field.Modify(System.String,ArcShapeFile.eFieldType,System.Int16,System.Int16)">
+            <summary>Change the field name, type, size and decimal placing of a particular field</summary>
+             <param name="Name">The new Field name of the ShapeFile Database record</param>
+             <param name="Type">The new Type of field to be created</param>
+             <param name="Size">The new length of the field</param>
+             <param name="Decimal">The new number of digits to be stored right of the decimal point</param>
+             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
+             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
+             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
+        </member>
+        <member name="M:ArcShapeFile.Field.Modify(System.String,System.Int16)">
+            <summary>Change the field name and size of a particular field</summary>
+             <param name="Name">The new Field name of the ShapeFile Database record</param>
+             <param name="Size">The new length of the field</param>
+             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
+             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
+             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
+        </member>
+        <member name="M:ArcShapeFile.Field.Modify(System.String)">
+            <summary>Change the field name of a particular field</summary>
+             <param name="Name">The new Field name of the ShapeFile Database record</param>
+             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
+             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
+             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
+        </member>
+        <member name="M:ArcShapeFile.Field.Modify(System.String,System.Int16,System.Int16)">
+            <summary>Change the field name, size and decimal placing of a particular field</summary>
+             <param name="Name">The new Field name of the ShapeFile Database record</param>
+             <param name="Size">The new length of the field</param>
+             <param name="Decimal">The new number of digits to be stored right of the decimal point</param>
+             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
+             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
+             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
+        </member>
+        <member name="M:ArcShapeFile.Field.Modify(ArcShapeFile.eFieldType,System.Int16,System.Int16)">
+            <summary>Change the field type, size and decimal placing of a particular field</summary>
+             <param name="Type">The new Type of field to be created</param>
+             <param name="Size">The new length of the field</param>
+             <param name="Decimal">The new number of digits to be stored right of the decimal point</param>
+             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
+             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
+             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
+        </member>
+        <member name="M:ArcShapeFile.Field.Modify(System.Int16,System.Int16)">
+            <summary>Change the field size and decimal placing of a particular field</summary>
+             <param name="Size">The new length of the field</param>
+             <param name="Decimal">The new number of digits to be stored right of the decimal point</param>
+             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
+             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
+             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
+        </member>
+        <member name="M:ArcShapeFile.Field.Modify(System.Int16)">
+            <summary>Change the field size of a particular field</summary>
+             <param name="Size">The new length of the field</param>
+             <remarks>You can change the details of any field in the Fields collection using this method.  One thing to be aware of though is that 
+             once you've changed to the details you still have to write them out to the DBF file.  This is done with the <see cref="M:ArcShapeFile.ShapeFile.ModifyShape">ModifyShape</see>
+             method.  If you don't do this and start writing out ShapeFile records then you will corrupt your database - so use some common sense here.</remarks>
+        </member>
+        <member name="M:ArcShapeFile.Field.Delete">
+            <summary> Marks the field for deletion.  This will not physically occur until the Pack command is given.</summary>
+            <seealso cref="P:ArcShapeFile.Field.IsDeleted"/>
+            <seealso cref="M:ArcShapeFile.Field.UnDelete"/>
+            <seealso cref="M:ArcShapeFile.ShapeFile.Pack">Pack</seealso>
+        </member>
+        <member name="M:ArcShapeFile.Field.UnDelete">
+            <summary> Unmarks the field for deletion.  Just in case you've had second thoughts about deleting a Field.</summary>
+            <seealso cref="P:ArcShapeFile.Field.IsDeleted"/>
+            <seealso cref="M:ArcShapeFile.Field.Delete"/>
+            <seealso cref="M:ArcShapeFile.ShapeFile.Pack">Pack</seealso>
+        </member>
         <member name="T:ArcShapeFile.Fields">
             <summary>
             The Collection of all Database field information and data values
@@ -250,6 +250,14 @@
             <see cref="M:ArcShapeFile.ShapeFile.WriteFieldDefs">WriteFieldDefs</see> method.  You can aren't limited to adding field definitions to new shapefiles - you can append them to existing ones too.
             </remarks>
         </member>
+        <member name="P:ArcShapeFile.Fields.FixFieldNames">
+            <summary>
+            Defines if duplicate field names should be corrected by adding a number to the end of the field name
+            </summary>
+            <remarks>As with all databases - your field names need to be unique but as the .DBF data format limits the field name to 10 characters this can sometimes be a bit of a problem.  
+            When you set this property to true every field name is checked when added.  If it isn't unique then the field name has a counter added to it (e.g. MYNAME1, MYNAME2).  If the field name is larger than
+            10 charcters in length then it will be truncated before the counter is added.</remarks>
+        </member>
         <member name="M:ArcShapeFile.Fields.RemoveAt(System.Int32)">
             <summary>
             Marks a field for deletion
@@ -262,18 +270,11 @@
             <seealso cref="M:ArcShapeFile.Field.UnDelete">Field UnDelete</seealso>
             <seealso cref="M:ArcShapeFile.ShapeFile.Pack">Pack</seealso>
         </member>
-        <member name="M:ArcShapeFile.Fields.Strip">
+        <member name="M:ArcShapeFile.Fields.SetValues(System.Object[])">
             <summary>
-            Removes the data values from the Fields Collection but leaves the structure behind
+            Sets all the field values in one go from the provided array.  It's up to you to get the order right
             </summary>
-        </member>
-        <member name="P:ArcShapeFile.Fields.FixFieldNames">
-            <summary>
-            Defines if duplicate field names should be corrected by adding a number to the end of the field name
-            </summary>
-            <remarks>As with all databases - your field names need to be unique but as the .DBF data format limits the field name to 10 characters this can sometimes be a bit of a problem.  
-            When you set this property to true every field name is checked when added.  If it isn't unique then the field name has a counter added to it (e.g. MYNAME1, MYNAME2).  If the field name is larger than
-            10 charcters in length then it will be truncated before the counter is added.</remarks>
+            <param name="values">An array of objects with the field values</param>
         </member>
         <member name="P:ArcShapeFile.Fields.isDeleted">
             <summary>
@@ -293,6 +294,11 @@
             Grabs the Field record from the collection by using the FieldName
             </summary>
             <param name="FieldName">The field name listed in the collection</param>
+        </member>
+        <member name="M:ArcShapeFile.Fields.Strip">
+            <summary>
+            Removes the data values from the Fields Collection but leaves the structure behind
+            </summary>
         </member>
         <member name="T:ArcShapeFile.Part">
             <summary>
@@ -7386,6 +7392,473 @@
             This method makes sure that the file handles have been released and the garbage collection has been fired.  Always a good idea.
             </remarks>
         </member>
+        <member name="P:ArcShapeFile.ShapeFile.Language">
+            <summary>
+            Sets/Returns the codepage of the Fields database
+            </summary>
+            <value>The Language Codepage. The setting or return value is an ENum constant that indicates the LCID of the language code page.</value>
+            <remarks>
+            Language support in the .DBF format is pretty limited but normally you can get away with the default of OEM which turns character recognition over to the host computer.</remarks>
+            <seealso cref="T:ArcShapeFile.eLanguage"/>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.CurrentRecord">
+            <summary>
+            Returns the ordinal position of the current record within the <c>ShapeFile</c>
+            </summary>
+            <remarks>Sometimes you want to know how far through the file you are.  This property will tell you what record number you've reached.  Note: the first record will return a CurrentRecord of 1 rather than 0
+            as this property is meant to indicate the relative position within the ShapeFile from 1 to RecordCount.  The MoveTo methods and CopyFrom methods rely on a 0 based ordinal (0 to RecordCount - 1).</remarks>
+            <seealso cref="P:ArcShapeFile.ShapeFile.RecordCount"/>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.RecordCount">
+            <summary>
+            Returns the total number of records (including NULL shapes and deleted records) in a <c>ShapeFile</c>
+            </summary>
+            <remarks>If the <B>RecordCount</B> value is 0, there are no objects in the collection.  You can use this property to easily	iterate through the records in the file i.e.
+            <example>
+            <code lang="C#">
+            for (int i = 0; i &lt; shp.RecordCount; i++}
+            {
+                // Do some stuff here
+                shp.MoveNext();
+            }
+            </code>
+            <code lang="VB">
+            For i as Integer = 0 To shp.RecordCount - 1 
+                ' Do some stuff here
+                shp.MoveNext()
+            Next i
+            </code>
+            </example>
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.Area">
+            <summary>
+            Returns the total area of the current polygon shape.
+            </summary>
+            <value>The total area of the current polygon shape</value>
+            <remarks>
+            The value returned by this object represents the total area of the ShapeFile. So ... if you have a multipart polygon shape that includes donuts then the Area reports will be the area of all non-donut parts minus the area of all donut parts. For the area of each part refer to the Parts <see cref="P:ArcShapeFile.Part.Area"/> property.
+            This variable is a Nullable double so if you aren't reading a polygon ShapeFile the value will be null.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.CentroidX">
+             <summary>
+             Returns the X centre of gravity of a ShapeFile polygon shape
+             </summary>
+             <value>
+             The centroid x.
+             </value>
+             <remarks>
+            There are several methods for finding the centre of mass of a polygon.  In this case I'm using weighted sum of the centroids of the polygon partitioned into triangles (the code can be found <see href="http://math.stackexchange.com/questions/90463/how-can-i-calculate-the-centroid-of-polygon">here</see>).  For polyline features the average mid point is used.  In either case refer to the <see cref="P:ArcShapeFile.Part.CentroidX">Part.CentroidX</see> property for the individual centroids of multipart shapes.
+             </remarks>
+             <seealso cref="P:ArcShapeFile.ShapeFile.CentroidY"/>
+             <seealso cref="P:ArcShapeFile.Part.CentroidX"/>
+             <seealso cref="P:ArcShapeFile.Part.CentroidY"/>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.CentroidY">
+             <summary>
+             Returns the Y centre of gravity of a ShapeFile polygon shape
+             </summary>
+             <value>
+             The centroid y.
+             </value>
+             <remarks>
+            There are several methods for finding the centre of mass of a polygon.  In this case I'm using weighted sum of the centroids of the polygon partitioned into triangles (the code can be found <see href="http://math.stackexchange.com/questions/90463/how-can-i-calculate-the-centroid-of-polygon">here</see>).  For polyline features the average mid point is used.  In either case refer to the <see cref="P:ArcShapeFile.Part.CentroidX">Part.CentroidY</see> property for the individual centroids of multipart shapes.
+             </remarks>
+             <seealso cref="P:ArcShapeFile.ShapeFile.CentroidX"/>
+             <seealso cref="P:ArcShapeFile.Part.CentroidX"/>
+             <seealso cref="P:ArcShapeFile.Part.CentroidY"/>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.Perimeter">
+             <summary>
+             Returns the total length of the perimeter around a ShapeFile polygon shape or the length a Shapefile line shape
+             </summary>
+             <value>The total perimeter or length</value>
+            <remarks>
+            This property is really designed to cater for polygons and lines.
+            If you want the perimeter length of each shape part use the ShapeFile <see cref="P:ArcShapeFile.Part.Perimeter"/> property
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.yMax">
+             <summary>
+             Returns the maximum Y value of the minimum bounding rectangle describing each 
+             outer bounds of the entire ShapeFile
+             </summary>
+            <remarks>
+            <value>The maximum Y value of the current shape</value>
+            Part of the entire ShapeFile record minimum bounding values, this value and is popoulated for all shape types.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.xMax">
+             <summary>
+             Returns the maximum X value of the minimum bounding rectangle describing each 
+             outer bounds of the entire ShapeFile
+             </summary>
+            <value>The maximum X value of the current shape</value>
+            <remarks>
+            Part of the entire ShapeFile record minimum bounding values, this value and is popoulated for all shape types.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.yMin">
+             <summary>
+             Returns the minimum Y value of the minimum bounding rectangle describing each 
+             outer bounds of the entire ShapeFile
+             </summary>
+            <value>The minimum Y value of the current shape</value>
+             <remarks>
+             Part of the entire ShapeFile record minimum bounding values, this value and is popoulated for all shape types.
+             </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.xMin">
+             <summary>
+             Returns the minimum X value of the minimum bounding rectangle describing each 
+             outer bounds of the entire ShapeFile
+             </summary>
+            <value>The minimum Y value of the current shape</value>
+            <remarks>
+            Part of the entire ShapeFile record minimum bounding values, this value and is popoulated for all shape types.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.mMin">
+             <summary>
+             Returns the minimum non-null measure value of the minimum bounding rectangle describing each 
+             outer bounds of the entire ShapeFile
+             </summary>
+            <value>The minimum measure value of the current shape</value>
+            <remarks>
+            Part of the minimum bounding values for the entire ShapeFile,  this value may be null and populated only for shapes in X,Y,Z space or Measured X,Y space.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.mMax">
+             <summary>
+             Returns the maximum non-null measure value of the minimum bounding rectangle describing each 
+             outer bounds of the entire ShapeFile
+             </summary>
+            <value>The maximum measure value of the current shape</value>
+            <remarks>
+            Part of the minimum bounding values for the entire ShapeFile,  this value may be null and populated only for shapes in X,Y,Z space or Measured X,Y space.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.zMin">
+             <summary>
+             Returns the minimum Z value of the minimum bounding rectangle describing each 
+             outer bounds of the entire ShapeFile
+             </summary>
+            <value>The minimum Z value of the current shape</value>
+            <remarks>
+            Part of the entire ShapeFile minimum bounding values, this value is populated only for shapes in X,Y,Z space and will be null otherwise
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.zMax">
+             <summary>
+             Returns the maximum Z value of the minimum bounding rectangle describing each 
+             outer bounds of the entire ShapeFile
+             </summary>
+            <value>The maximum Z value of the current shape</value>
+            <remarks>
+            Part of the entire ShapeFile minimum bounding values, this value is populated only for shapes in X,Y,Z space and will be null otherwise
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.BOF">
+             <summary>
+             Returns a value that indicates whether the current record position is before the 
+             first record in a ShapeFile 
+             </summary>
+             <value>Beginning of File condition</value>
+             <returns>True if you try and move above the first record</returns>
+             <remarks>Useful when you're moving backwards through the ShapeFile records</remarks>
+             <example>
+             <code lang="C#">
+             shp.MoveLast();
+             While(!shp.BOF)
+             {
+                 // Do some stuff here
+                 shp.MovePrevious();
+             }
+             </code>
+            <code lang="VB">
+             shp.MoveLast()
+             While Not shp.BOF
+                 '' Do some stuff here
+                 shp.MovePrevious()
+             End While
+             </code>        
+             </example>
+             <seealso cref="P:ArcShapeFile.ShapeFile.EOF"/>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.EOF">
+             <summary>
+             Returns a value that indicates whether the current record position is after the 
+             last record in a ShapeFile 
+             </summary>
+             <value>End of File condition</value>
+             <returns>True if you try and move beyond the last record</returns>
+             <remarks>This property can be handy if you want to cycle through the ShapeFile records without referencing a for 0 to RecordCount loop. ???? I sense puzzlement.  Check out the example
+             </remarks>
+             <example>
+             <code lang="C#">
+             While(!shp.EOF)
+             {
+                 // Do some stuff here
+                 shp.MoveNext();
+             }
+             </code>
+            <code lang="VB">
+             While Not shp.EOF
+                 '' Do some stuff here
+                 shp.MoveNext()
+             End While
+             </code>        
+             </example>
+            <seealso cref="P:ArcShapeFile.ShapeFile.BOF"/>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.NoMatch">
+             <summary>
+             Indicates whether a Find search has located any records for the given criteria
+             </summary>
+             <value>Is there a match in the search condition</value>
+            <remarks>
+            To locate a record, use one of the <see cref="O:ArcShapeFile.ShapeFile.FindFirst">FindFirst</see>  methods. Check the NoMatch property to see whether a record was found.
+            If the find method is unsuccessful and NoMatch is True and the current record will no longer be valid.  Note: Using any of the Move methods will also reset the NoMatch property to True.
+            </remarks>
+            <example><code lang="C#">
+                 myShape.FindFirst("[FloatField] &gt; 1 and [DateField] &lt; 10 July 2000");
+                 Console.WriteLine("Value found at Record {0}", myShape.CurrentRecord.ToString());
+                 
+                 while (!myShape.NoMatch)
+                 {
+                     myShape.FindNext();
+                     if (!myShape.NoMatch)
+                     {
+                        Console.WriteLine(&quot;Next value found at Record {0}&quot;, myShape.CurrentRecord.ToString());
+                        foreach (Field mF in myShape.Fields)
+                            Console.WriteLine(mF.Name + "   " + mF.Value.ToString());
+                    }
+                }
+             </code>
+             <code lang="VB">
+             myShape.FindFirst("[FloatField] &gt; 1 and [DateField] &lt; 10 July 2000")
+             Console.WriteLine("Value found at Record {0}", myShape.CurrentRecord.ToString())
+             
+             While Not myShape.NoMatch
+             	myShape.FindNext()
+             	If Not myShape.NoMatch Then
+             		Console.WriteLine("Next value found at Record {0}", myShape.CurrentRecord.ToString())
+             		For Each mF As Field In myShape.Fields
+                         Console.WriteLine(mF.Name + "   " + mF.Value.ToString())
+             		Next
+             	End If
+             End While
+             </code>
+             </example>
+            <seealso cref="M:ArcShapeFile.ShapeFile.FindFirst(System.String)"/>
+            <seealso cref="M:ArcShapeFile.ShapeFile.FindFirst(System.Double,System.Double)"/>
+            <seealso cref="M:ArcShapeFile.ShapeFile.FindFirst(System.Double,System.Double,System.Double)"/>
+            <seealso cref="M:ArcShapeFile.ShapeFile.FindNext"/>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.TestForHoles">
+             <summary>
+             The TestForHoles property allows you to turn on or off the ShapeFile librarys' ability to check for holes within polygons by using a point in polygon method.
+             If it is set to False the digitised orientataion of the polygon will be used to determine holes.
+             </summary>
+             <value>Should the TestForHoles action be done</value>
+            <remarks>
+            By default the library relies on the orientation of the polygon parts to denote whether the part is a hole.  Clockwise means no, anti-clockwise means yes.
+            If you suspect that the shapes delivered to you haven't followed this rule then set the TestForHoles property to True.  This will force a point in polygon test before the <see cref="P:ArcShapeFile.Part.IsHole"/> property of the Parts collection is set.  The downside of this is that it slows the read speed.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.RetainData">
+             <summary>
+             The RetainData Method allows you to keep existing data values when you are creating ShapeFile records
+             </summary>
+             <value>Should the attribute data be retained between writes</value>
+            <remarks>
+            Why would you want to do this?  Well I've sometimes found that I wanted to retain most of the data values between record inserts and only change the values on one or two fields.
+            That's why I dreamed up the property.  The default is False meaning that you have to freshly populate all your defined fields with values between inserts.
+            <para>OK I'm teaching everyone to suck eggs here but ... If you do want to retain the data - make sure you set the RetainData property to True BEFORE you write out the record.</para>
+            </remarks>
+            <example>
+            <code lang="C#">
+            using (ShapeFile myShape as new ShapeFile())
+            {
+                myShape.Open(@"C:\Shapes\Point.shp", eShapeType.shpPoint);
+                myShape.Fields.Add("TextField", eFieldType.shpText);
+                myShape.Fields.Add("NumField", eFieldType.shpNumeric, 5, 2);
+                myShape.Fields.Add("DateField", eFieldType.shpDate);
+                myShape.Fields.Add("FloatField", eFieldType.shpFloat);
+                myShape.WriteFieldDefs();
+            
+                myShape.RetainData = true;
+                myShape.Vertices.Add(1, 1);
+                myShape.Fields[0].Value = "First";
+                myShape.Fields[1].Value = 1.23;
+                myShape.Fields[2].Value = DateTime.Now;
+                myShape.Fields[3].Value = 1.23E-5;
+                myShape.WriteShape();
+            
+                myShape.Vertices.Add(1, 10);
+                myShape.Fields[0].Value = "Second;
+                myShape.WriteShape();
+            
+                myShape.RetainData = false;
+                myShape.Vertices.Add(10, 10);
+                myShape.Fields[0].Value = "Third";
+                myShape.Fields[1].Value = 2.34;
+                myShape.Fields[2].Value = DateTime.Now;
+                myShape.Fields[3].Value = 2.34E-5;
+                myShape.WriteShape();
+            }
+            </code>
+            <code lang="VB">
+            Using myShape As New ShapeFile()
+                myShape.Open("C:\Shapes\Point.shp", eShapeType.shpPoint)
+                myShape.Fields.Add("TextField", eFieldType.shpText)
+                myShape.Fields.Add("NumField", eFieldType.shpNumeric, 5, 2)
+                myShape.Fields.Add("DateField", eFieldType.shpDate)
+                myShape.Fields.Add("FloatField", eFieldType.shpFloat)
+                myShape.WriteFieldDefs()
+            
+                myShape.RetainData = True
+                myShape.Vertices.Add(1, 1)
+                myShape.Fields(0).Value = "First"
+                myShape.Fields(1).Value = 1.23
+                myShape.Fields(2).Value = DateTime.Now
+                myShape.Fields(3).Value = 0.0000123
+                myShape.WriteShape()
+            
+                myShape.Vertices.Add(1, 10)
+                myShape.Fields(0).Value = "Second"
+                myShape.WriteShape()
+            
+                myShape.RetainData = False
+                myShape.Vertices.Add(10, 10)
+                myShape.Fields(0).Value = "Third"
+                myShape.Fields(1).Value = 2.34
+                myShape.Fields(2).Value = DateTime.Now
+                myShape.Fields(3).Value = 0.0000234
+                myShape.WriteShape()
+            End Using
+            </code>
+            </example>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.ReadMode">
+             <summary>
+             The ReadMode property allows you to turn on or off the automatic loading of ShapeFile 
+             vertice and database information. Setting this to HeaderOnly can be handy when you don't 
+             want the overhead of reading all the shape information, but want to test the bounds or database 
+             information separately
+             </summary>
+             <value>How do you want the record to be read</value>
+            <remarks>
+            <para>Set this property before any move action to change the way the DLL loads the data.  The question really is - When to use what method.
+            Let's see.  FullRead loads all the data into the Vertices and Fields collections. The upside of this is that it is easy to then manipulate all the data for the ShapeFile. The downside is that it does take time to load the data into the collections. This may be a real headache if you are reading a record with a large number of vertices.
+            So ... If you're loading a ShapeFile and want to scan through to find a particular condition then HeaderOnly might be the one to use.</para>
+            <para>HeaderOnly mode reads in the MBR values of the Vertices (including the how many vertices there are) but doesn't load any of the data into the collections.  This makes it fast to scan through all the records.
+            When you want to see the contents of a particular record then you can load the Vertice data using the <see cref="M:ArcShapeFile.ShapeFile.LoadShapeData"/> method and/or the database values into Fields using the <see cref="M:ArcShapeFile.ShapeFile.LoadDBFData"/> method.</para>
+            <para>If you want the best of both worlds use my personal favourite - FastRead.  This method loads all the record metadata (number of points, number of parts, the MBRs), populates the Fields collection with the database attributes, but holds all the vertice data in an internal byte array.  Everytime you read a vertice the DLL scans the array for the correct byte offset.  
+            What it doesn't do is caluclate centroids, areas and test for holes.</para>
+            <para>So how fast are the various methods?  Here are some results reading the vertices from a polyline shapefile with 688,354 records.
+            <list type="table">
+                <listheader>
+                    <term>ReadMode</term>
+                    <description>Description</description>
+                    <unlock>Files Unlocked Speed</unlock>
+                    <lock>Files Locked Speed</lock>
+                </listheader>
+                <item>
+                    <term>FullRead</term>
+                    <description>The Field and Vertice collections, MBR, Number of points, centroids etc. are populated</description>
+                    <unlock>394,279ms</unlock>
+                    <lock>14,264ms</lock>
+                </item>
+                <item>
+                    <term>FastRead</term>
+                    <description>The Field collections, MBR and Number of points are populated</description>
+                    <unlock>380,155ms</unlock>
+                    <lock>9,919ms</lock>
+                </item>
+                <item>
+                    <term>HeaderOnly</term>
+                    <description>The MBR and Number of points are populated.  A separate call is required to load the Fields or Vertices</description>
+                    <unlock>153,254ms</unlock>
+                    <lock>8,112ms</lock>
+                </item>
+             </list>
+             Note that the best results are achieved when you <see cref="O:ArcShapeFile.ShapeFile.Open">Open</see> your ShapeFile with the Lock parameter set to True.
+            </para>
+            </remarks>
+             <seealso cref="M:ArcShapeFile.ShapeFile.LoadDBFData"/>
+             <seealso cref="M:ArcShapeFile.ShapeFile.LoadShapeData"/>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.ShapeFileName">
+             <summary>
+             Returns the pathname of the currently opened ShapeFile
+             </summary>
+            <value>The name of the ShapeFile</value>
+            <remarks>
+            This property is read only and is set by using the <see cref="O:ArcShapeFile.ShapeFile.Open"/> method.
+            Just a pointer here: ShapeFiles really consist of a geometry file (.SHP) and index file (.SHX) and a database file (.DBF).  Other extensions are used in the ARCGIS envirnoment that may be included in a delivery, but these aren't used by this DLL.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.ShapeType">
+             <summary>
+             Returns the type of the current record of the opened ShapeFile
+             </summary>
+             <value>The eNum of the ShapeType</value>
+            <remarks>
+            There can only be one ShapeType per ShapeFile. Well ... not strictly true ... You can also have Null Shapes. ESRI have yet to implement multiple ShapeTypes within a Shapefile. The White Paper on Shapefiles suggests that this is a future implementation, but nothing has happened in the last 25 years so I wouldn't hold my breath.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.CreateEmpty">
+             <summary>
+             Gets or Sets the ability of the Open command to create a NULL record when a new ShapeFile is created.
+             This acts as a place holder and allows the empty Shapefile to be read by other applications.
+             </summary>
+             <value>Will the ShapeFile be created empty (Default = True)</value>
+            <remarks>
+            This property was added because a user of the VB DLL was creating ShapeFiles and then loading them in other apps to add data.
+            Because the programs were reading the number of records from the DBF file the app threw a wobbly when it encounter no records (go figure) ... so ...
+            This property allows you to create a new ShapeFile that either has a null shape added to the bottom ( value = False ) or completely empty ( default value = True).
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.Vertices">
+            <summary>
+             Returns the Vertices collection associated with current ShapeFile Record
+            </summary>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.Parts">
+            <summary>
+             Returns the Parts collection associated with current ShapeFile Record
+            </summary>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.Fields">
+            <summary>
+             Returns the Fields collection associated with current ShapeFile Record
+            </summary>
+            <remarks>The Fields collection represents the attributes held within the DBF file associated with the ShapeFile.</remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.Projection">
+            <summary>
+            The Projection and Datum info of the ShapeFile
+            </summary>
+            <remarks>I created the Projection class to hold all the details found within the .PRJ file.  To write a projection file use <see cref="O:ArcShapeFile.ShapeFile.WriteProjection">WriteProjection</see>.  </remarks>
+        </member>
+        <member name="P:ArcShapeFile.ShapeFile.IsRecordNull">
+             <summary>
+             Returns true if the current record is a null shape
+             </summary>
+             <value>Is the current record null</value>
+            <remarks>
+            NULL shape records are often used as place holders in the ShapeFile or, in the case of this DLL, as an indicator that the current record has been marked for deletion.
+            This is the only time that you can have more than one shape type within one ShapeFile.  NULL shapes take up space in the file, but their contents are skip over.  To really remove these beasties you should <see cref="M:ArcShapeFile.ShapeFile.Pack"/> the file.
+            </remarks>
+        </member>
+        <member name="M:ArcShapeFile.ShapeFile.VerticesToWKT">
+            <summary>
+            Returns the Vertices of the current records as a Well Known Test (WKT) string
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:ArcShapeFile.ShapeFile.Open(System.String,ArcShapeFile.eShapeType,System.Boolean)">
              <summary>
              Creates a ShapeFile of a particular ShapeType with the file handles locked open ready for you to play with 
@@ -7906,7 +8379,7 @@
                 myShape.Open(@"C:\Shapes\Point.shp", true);
             
                 // Copy a selection of records to another file
-                myShape.CopyTo(@"C:\Shapes\Point_Copy.shp", "[TextField] like 'Record%' and [DateField] &gt; 10 July 2010");
+                myShape.CopyTo(@"C:\Shapes\Point_Copy.shp", "[TextField] like 'Record%' and [DateField] > 10 July 2010");
             }
              </code>
              <code lang="VB">
@@ -7914,7 +8387,7 @@
                 myShape.Open(@"C:\Shapes\Point.shp", True)
             
                 ' Copy a selection of records to another file
-                myShape.CopyTo(@"C:\Shapes\Point_Copy.shp", "[TextField] like 'Record%' and [DateField] &gt; 10 July 2010")
+                myShape.CopyTo(@"C:\Shapes\Point_Copy.shp", "[TextField] like 'Record%' and [DateField] > 10 July 2010")
                 
             End Using
              </code>
@@ -8801,7 +9274,7 @@
                      myShape.FindNext();
                      if (!myShape.NoMatch)
                      {
-                        Console.WriteLine("Next value found at Record {0}", myShape.CurrentRecord.ToString());
+                        Console.WriteLine(&quot;Next value found at Record {0}&quot;, myShape.CurrentRecord.ToString());
                         foreach (Field mF in myShape.Fields)
                             Console.WriteLine(mF.Name + "   " + mF.Value.ToString());
                     }
@@ -8845,7 +9318,7 @@
                      myShape.FindNext();
                      if (!myShape.NoMatch)
                      {
-                        Console.WriteLine("Next value found at Record {0}", myShape.CurrentRecord.ToString());
+                        Console.WriteLine(&quot;Next value found at Record {0}&quot;, myShape.CurrentRecord.ToString());
                         foreach (Field mF in myShape.Fields)
                             Console.WriteLine(mF.Name + "   " + mF.Value.ToString());
                     }
@@ -8886,7 +9359,7 @@
                      myShape.FindNext();
                      if (!myShape.NoMatch)
                      {
-                        Console.WriteLine("Next value found at Record {0}", myShape.CurrentRecord.ToString());
+                        Console.WriteLine(&quot;Next value found at Record {0}&quot;, myShape.CurrentRecord.ToString());
                         foreach (Field mF in myShape.Fields)
                             Console.WriteLine(mF.Name + "   " + mF.Value.ToString());
                     }
@@ -8984,10 +9457,94 @@
             </summary>
             <param name="e"></param>
         </member>
+        <member name="E:ArcShapeFile.ShapeFile.ShapeRecordCreated">
+            <summary>
+            Event raised when a new record is added to the ShapeFile
+            </summary>
+            <remarks>
+            Fired during a <see cref="M:ArcShapeFile.ShapeFile.WriteShape"/> command, this event will tell you when a record has been added to the ShapeFile.
+            </remarks>
+        </member>
+        <member name="T:ArcShapeFile.ShapeFile.ShapeCreatedEventHandler">
+            <summary>
+            Raised when the ShapeFile record has been created
+            </summary>
+            <param name="e">The record number of the created record</param>
+            <remarks>
+            Fired during a <see cref="M:ArcShapeFile.ShapeFile.WriteShape"/> command, this event will tell you when a record has been added to the ShapeFile using this DLL.  I envisaged using this
+            event to log when a user adds a new record.
+            </remarks>
+        </member>
+        <member name="E:ArcShapeFile.ShapeFile.ShapeRecordDeleted">
+            <summary>
+            Event raised when a record is deleted from the ShapeFile
+            </summary>
+            <remarks>
+            Fired during a <see cref="M:ArcShapeFile.ShapeFile.DeleteShape"/> command, this event will tell you when a record has been marked for deletion in the ShapeFile.
+            </remarks>
+        </member>
+        <member name="T:ArcShapeFile.ShapeFile.ShapeDeletedEventHandler">
+            <summary>
+            Raised when the ShapeFile record has been deleted
+            </summary>
+            <param name="e">The record number of the deleted record</param>
+            <remarks>
+            Fired during a <see cref="M:ArcShapeFile.ShapeFile.DeleteShape"/> command, this event will tell you when a record has been marked for deletion in the ShapeFile.
+            </remarks>
+        </member>
+        <member name="E:ArcShapeFile.ShapeFile.ShapeFileOpened">
+            <summary>
+            Event raised when a ShapeFile has been opened
+            </summary>
+            <remarks>
+            OK ... Paranoia rules ... but sometimes you might want to log what ShapeFile has been opened and how.  This event is fired by the <see cref="M:ArcShapeFile.ShapeFile.Open(System.String)"/> method and will tell you just that.
+            </remarks>
+        </member>
+        <member name="T:ArcShapeFile.ShapeFile.ShapeOpenedEventHandler">
+            <summary>
+            Raised when the ShapeFile has been opened
+            </summary>
+            <param name="e">The name of the opened ShapeFile, the Reading Mode  (Header Only, Fast Read) and whether the files are locked</param>
+        </member>
         <member name="M:ArcShapeFile.ShapeFile.onShapeFileOpened(ArcShapeFile.ShapeFileOpenEventArgs)">
             <summary>
             Event raised when a record in the ShapeFile has been modified
             </summary>
+        </member>
+        <member name="E:ArcShapeFile.ShapeFile.ShapeRecordModified">
+            <summary>
+            Event raised when a ShapeFile has been modified
+            </summary>
+            <remarks>
+            Fired during a <see cref="M:ArcShapeFile.ShapeFile.ModifyShape"/> command, this event will tell you what part of the ShapeFile has been changed - the fields or the vertices.
+            It gets fired when the Vertices and/or Fields have been updated
+            </remarks>
+        </member>
+        <member name="T:ArcShapeFile.ShapeFile.ShapeModifiedEventHandler">
+            <summary>
+            Raised when the ShapeFile record has been modified
+            </summary>
+            <param name="e">The record number of the modified record and the modified scope - Vertice or Field change</param>
+            <remarks>
+            Fired during a <see cref="M:ArcShapeFile.ShapeFile.ModifyShape"/> command, this event will tell you what part of the ShapeFile has been changed - the fields or the vertices.
+            It gets fired when the Vertices and/or Fields have been updated
+            </remarks>
+        </member>
+        <member name="E:ArcShapeFile.ShapeFile.ShapeFilePacked">
+            <summary>
+            Event raised when the ShapeFile has been packed
+            </summary>
+            <remarks>
+            No event arguments with this one ... It just fires any time the <see cref="M:ArcShapeFile.ShapeFile.Pack"/> command is given.
+            </remarks>
+        </member>
+        <member name="T:ArcShapeFile.ShapeFile.ShapePackedEventHandler">
+            <summary>
+            Raised when the ShapeFile has been packed
+            </summary>
+            <remarks>
+            No event arguments with this one ... It just fires any time the <see cref="M:ArcShapeFile.ShapeFile.Pack"/> command is given.
+            </remarks>
         </member>
         <member name="M:ArcShapeFile.ShapeFile.WriteProjection(ArcShapeFile.eGeocentricDatums)">
             <summary>
@@ -9014,6 +9571,13 @@
             </summary>
             <param name="Projection">The EPSG number of the projection</param>
         </member>
+        <member name="M:ArcShapeFile.ShapeFile.WriteProjection(System.String)">
+            <summary>
+            Writes out a projection PRJ file for use in ESRI applications.  Not all projections are supported,
+            but included in the enums are those that are used in ArcGis 9
+            </summary>
+            <param name="ProjectionString">The user defined projection string</param>
+        </member>
         <member name="M:ArcShapeFile.ShapeFile.GetVerticeAngle(System.Double,System.Double,System.Double,System.Double)">
             <summary>
             Gets the vertice angle (in degrees) of a line represented by two vertice points.
@@ -9023,551 +9587,6 @@
             <param name="LastVerticeX">The last vertice x.</param>
             <param name="LastVerticeY">The last vertice y.</param>
             <returns></returns>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.Language">
-            <summary>
-            Sets/Returns the codepage of the Fields database
-            </summary>
-            <value>The Language Codepage. The setting or return value is an ENum constant that indicates the LCID of the language code page.</value>
-            <remarks>
-            Language support in the .DBF format is pretty limited but normally you can get away with the default of OEM which turns character recognition over to the host computer.</remarks>
-            <seealso cref="T:ArcShapeFile.eLanguage"/>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.CurrentRecord">
-            <summary>
-            Returns the ordinal position of the current record within the <c>ShapeFile</c>
-            </summary>
-            <remarks>Sometimes you want to know how far through the file you are.  This property will tell you what record number you've reached.  Note: the first record will return a CurrentRecord of 1 rather than 0
-            as this property is meant to indicate the relative position within the ShapeFile from 1 to RecordCount.  The MoveTo methods and CopyFrom methods rely on a 0 based ordinal (0 to RecordCount - 1).</remarks>
-            <seealso cref="P:ArcShapeFile.ShapeFile.RecordCount"/>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.RecordCount">
-            <summary>
-            Returns the total number of records (including NULL shapes and deleted records) in a <c>ShapeFile</c>
-            </summary>
-            <remarks>If the <B>RecordCount</B> value is 0, there are no objects in the collection.  You can use this property to easily	iterate through the records in the file i.e.
-            <example>
-            <code lang="C#">
-            for (int i = 0; i &lt; shp.RecordCount; i++}
-            {
-                // Do some stuff here
-                shp.MoveNext();
-            }
-            </code>
-            <code lang="VB">
-            For i as Integer = 0 To shp.RecordCount - 1 
-                ' Do some stuff here
-                shp.MoveNext()
-            Next i
-            </code>
-            </example>
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.Area">
-            <summary>
-            Returns the total area of the current polygon shape.
-            </summary>
-            <value>The total area of the current polygon shape</value>
-            <remarks>
-            The value returned by this object represents the total area of the ShapeFile. So ... if you have a multipart polygon shape that includes donuts then the Area reports will be the area of all non-donut parts minus the area of all donut parts. For the area of each part refer to the Parts <see cref="P:ArcShapeFile.Part.Area"/> property.
-            This variable is a Nullable double so if you aren't reading a polygon ShapeFile the value will be null.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.CentroidX">
-             <summary>
-             Returns the X centre of gravity of a ShapeFile polygon shape
-             </summary>
-             <value>
-             The centroid x.
-             </value>
-             <remarks>
-            There are several methods for finding the centre of mass of a polygon.  In this case I'm using weighted sum of the centroids of the polygon partitioned into triangles (the code can be found <see href="http://math.stackexchange.com/questions/90463/how-can-i-calculate-the-centroid-of-polygon">here</see>).  For polyline features the average mid point is used.  In either case refer to the <see cref="P:ArcShapeFile.Part.CentroidX">Part.CentroidX</see> property for the individual centroids of multipart shapes.
-             </remarks>
-             <seealso cref="P:ArcShapeFile.ShapeFile.CentroidY"/>
-             <seealso cref="P:ArcShapeFile.Part.CentroidX"/>
-             <seealso cref="P:ArcShapeFile.Part.CentroidY"/>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.CentroidY">
-             <summary>
-             Returns the Y centre of gravity of a ShapeFile polygon shape
-             </summary>
-             <value>
-             The centroid y.
-             </value>
-             <remarks>
-            There are several methods for finding the centre of mass of a polygon.  In this case I'm using weighted sum of the centroids of the polygon partitioned into triangles (the code can be found <see href="http://math.stackexchange.com/questions/90463/how-can-i-calculate-the-centroid-of-polygon">here</see>).  For polyline features the average mid point is used.  In either case refer to the <see cref="P:ArcShapeFile.Part.CentroidX">Part.CentroidY</see> property for the individual centroids of multipart shapes.
-             </remarks>
-             <seealso cref="P:ArcShapeFile.ShapeFile.CentroidX"/>
-             <seealso cref="P:ArcShapeFile.Part.CentroidX"/>
-             <seealso cref="P:ArcShapeFile.Part.CentroidY"/>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.Perimeter">
-             <summary>
-             Returns the total length of the perimeter around a ShapeFile polygon shape or the length a Shapefile line shape
-             </summary>
-             <value>The total perimeter or length</value>
-            <remarks>
-            This property is really designed to cater for polygons and lines.
-            If you want the perimeter length of each shape part use the ShapeFile <see cref="P:ArcShapeFile.Part.Perimeter"/> property
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.yMax">
-             <summary>
-             Returns the maximum Y value of the minimum bounding rectangle describing each 
-             outer bounds of the entire ShapeFile
-             </summary>
-            <remarks>
-            <value>The maximum Y value of the current shape</value>
-            Part of the entire ShapeFile record minimum bounding values, this value and is popoulated for all shape types.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.xMax">
-             <summary>
-             Returns the maximum X value of the minimum bounding rectangle describing each 
-             outer bounds of the entire ShapeFile
-             </summary>
-            <value>The maximum X value of the current shape</value>
-            <remarks>
-            Part of the entire ShapeFile record minimum bounding values, this value and is popoulated for all shape types.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.yMin">
-             <summary>
-             Returns the minimum Y value of the minimum bounding rectangle describing each 
-             outer bounds of the entire ShapeFile
-             </summary>
-            <value>The minimum Y value of the current shape</value>
-             <remarks>
-             Part of the entire ShapeFile record minimum bounding values, this value and is popoulated for all shape types.
-             </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.xMin">
-             <summary>
-             Returns the minimum X value of the minimum bounding rectangle describing each 
-             outer bounds of the entire ShapeFile
-             </summary>
-            <value>The minimum Y value of the current shape</value>
-            <remarks>
-            Part of the entire ShapeFile record minimum bounding values, this value and is popoulated for all shape types.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.mMin">
-             <summary>
-             Returns the minimum non-null measure value of the minimum bounding rectangle describing each 
-             outer bounds of the entire ShapeFile
-             </summary>
-            <value>The minimum measure value of the current shape</value>
-            <remarks>
-            Part of the minimum bounding values for the entire ShapeFile,  this value may be null and populated only for shapes in X,Y,Z space or Measured X,Y space.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.mMax">
-             <summary>
-             Returns the maximum non-null measure value of the minimum bounding rectangle describing each 
-             outer bounds of the entire ShapeFile
-             </summary>
-            <value>The maximum measure value of the current shape</value>
-            <remarks>
-            Part of the minimum bounding values for the entire ShapeFile,  this value may be null and populated only for shapes in X,Y,Z space or Measured X,Y space.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.zMin">
-             <summary>
-             Returns the minimum Z value of the minimum bounding rectangle describing each 
-             outer bounds of the entire ShapeFile
-             </summary>
-            <value>The minimum Z value of the current shape</value>
-            <remarks>
-            Part of the entire ShapeFile minimum bounding values, this value is populated only for shapes in X,Y,Z space and will be null otherwise
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.zMax">
-             <summary>
-             Returns the maximum Z value of the minimum bounding rectangle describing each 
-             outer bounds of the entire ShapeFile
-             </summary>
-            <value>The maximum Z value of the current shape</value>
-            <remarks>
-            Part of the entire ShapeFile minimum bounding values, this value is populated only for shapes in X,Y,Z space and will be null otherwise
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.BOF">
-             <summary>
-             Returns a value that indicates whether the current record position is before the 
-             first record in a ShapeFile 
-             </summary>
-             <value>Beginning of File condition</value>
-             <returns>True if you try and move above the first record</returns>
-             <remarks>Useful when you're moving backwards through the ShapeFile records</remarks>
-             <example>
-             <code lang="C#">
-             shp.MoveLast();
-             While(!shp.BOF)
-             {
-                 // Do some stuff here
-                 shp.MovePrevious();
-             }
-             </code>
-            <code lang="VB">
-             shp.MoveLast()
-             While Not shp.BOF
-                 '' Do some stuff here
-                 shp.MovePrevious()
-             End While
-             </code>        
-             </example>
-             <seealso cref="P:ArcShapeFile.ShapeFile.EOF"/>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.EOF">
-             <summary>
-             Returns a value that indicates whether the current record position is after the 
-             last record in a ShapeFile 
-             </summary>
-             <value>End of File condition</value>
-             <returns>True if you try and move beyond the last record</returns>
-             <remarks>This property can be handy if you want to cycle through the ShapeFile records without referencing a for 0 to RecordCount loop. ???? I sense puzzlement.  Check out the example
-             </remarks>
-             <example>
-             <code lang="C#">
-             While(!shp.EOF)
-             {
-                 // Do some stuff here
-                 shp.MoveNext();
-             }
-             </code>
-            <code lang="VB">
-             While Not shp.EOF
-                 '' Do some stuff here
-                 shp.MoveNext()
-             End While
-             </code>        
-             </example>
-            <seealso cref="P:ArcShapeFile.ShapeFile.BOF"/>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.NoMatch">
-             <summary>
-             Indicates whether a Find search has located any records for the given criteria
-             </summary>
-             <value>Is there a match in the search condition</value>
-            <remarks>
-            To locate a record, use one of the <see cref="O:ArcShapeFile.ShapeFile.FindFirst">FindFirst</see>  methods. Check the NoMatch property to see whether a record was found.
-            If the find method is unsuccessful and NoMatch is True and the current record will no longer be valid.  Note: Using any of the Move methods will also reset the NoMatch property to True.
-            </remarks>
-            <example><code lang="C#">
-                 myShape.FindFirst("[FloatField] &gt; 1 and [DateField] &lt; 10 July 2000");
-                 Console.WriteLine("Value found at Record {0}", myShape.CurrentRecord.ToString());
-                 
-                 while (!myShape.NoMatch)
-                 {
-                     myShape.FindNext();
-                     if (!myShape.NoMatch)
-                     {
-                        Console.WriteLine("Next value found at Record {0}", myShape.CurrentRecord.ToString());
-                        foreach (Field mF in myShape.Fields)
-                            Console.WriteLine(mF.Name + "   " + mF.Value.ToString());
-                    }
-                }
-             </code>
-             <code lang="VB">
-             myShape.FindFirst("[FloatField] &gt; 1 and [DateField] &lt; 10 July 2000")
-             Console.WriteLine("Value found at Record {0}", myShape.CurrentRecord.ToString())
-             
-             While Not myShape.NoMatch
-             	myShape.FindNext()
-             	If Not myShape.NoMatch Then
-             		Console.WriteLine("Next value found at Record {0}", myShape.CurrentRecord.ToString())
-             		For Each mF As Field In myShape.Fields
-                         Console.WriteLine(mF.Name + "   " + mF.Value.ToString())
-             		Next
-             	End If
-             End While
-             </code>
-             </example>
-            <seealso cref="M:ArcShapeFile.ShapeFile.FindFirst(System.String)"/>
-            <seealso cref="M:ArcShapeFile.ShapeFile.FindFirst(System.Double,System.Double)"/>
-            <seealso cref="M:ArcShapeFile.ShapeFile.FindFirst(System.Double,System.Double,System.Double)"/>
-            <seealso cref="M:ArcShapeFile.ShapeFile.FindNext"/>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.TestForHoles">
-             <summary>
-             The TestForHoles property allows you to turn on or off the ShapeFile librarys' ability to check for holes within polygons by using a point in polygon method.
-             If it is set to False the digitised orientataion of the polygon will be used to determine holes.
-             </summary>
-             <value>Should the TestForHoles action be done</value>
-            <remarks>
-            By default the library relies on the orientation of the polygon parts to denote whether the part is a hole.  Clockwise means no, anti-clockwise means yes.
-            If you suspect that the shapes delivered to you haven't followed this rule then set the TestForHoles property to True.  This will force a point in polygon test before the <see cref="P:ArcShapeFile.Part.IsHole"/> property of the Parts collection is set.  The downside of this is that it slows the read speed.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.RetainData">
-             <summary>
-             The RetainData Method allows you to keep existing data values when you are creating ShapeFile records
-             </summary>
-             <value>Should the attribute data be retained between writes</value>
-            <remarks>
-            Why would you want to do this?  Well I've sometimes found that I wanted to retain most of the data values between record inserts and only change the values on one or two fields.
-            That's why I dreamed up the property.  The default is False meaning that you have to freshly populate all your defined fields with values between inserts.
-            <para>OK I'm teaching everyone to suck eggs here but ... If you do want to retain the data - make sure you set the RetainData property to True BEFORE you write out the record.</para>
-            </remarks>
-            <example>
-            <code lang="C#">
-            using (ShapeFile myShape as new ShapeFile())
-            {
-                myShape.Open(@"C:\Shapes\Point.shp", eShapeType.shpPoint);
-                myShape.Fields.Add("TextField", eFieldType.shpText);
-                myShape.Fields.Add("NumField", eFieldType.shpNumeric, 5, 2);
-                myShape.Fields.Add("DateField", eFieldType.shpDate);
-                myShape.Fields.Add("FloatField", eFieldType.shpFloat);
-                myShape.WriteFieldDefs();
-            
-                myShape.RetainData = true;
-                myShape.Vertices.Add(1, 1);
-                myShape.Fields[0].Value = "First";
-                myShape.Fields[1].Value = 1.23;
-                myShape.Fields[2].Value = DateTime.Now;
-                myShape.Fields[3].Value = 1.23E-5;
-                myShape.WriteShape();
-            
-                myShape.Vertices.Add(1, 10);
-                myShape.Fields[0].Value = "Second;
-                myShape.WriteShape();
-            
-                myShape.RetainData = false;
-                myShape.Vertices.Add(10, 10);
-                myShape.Fields[0].Value = "Third";
-                myShape.Fields[1].Value = 2.34;
-                myShape.Fields[2].Value = DateTime.Now;
-                myShape.Fields[3].Value = 2.34E-5;
-                myShape.WriteShape();
-            }
-            </code>
-            <code lang="VB">
-            Using myShape As New ShapeFile()
-                myShape.Open("C:\Shapes\Point.shp", eShapeType.shpPoint)
-                myShape.Fields.Add("TextField", eFieldType.shpText)
-                myShape.Fields.Add("NumField", eFieldType.shpNumeric, 5, 2)
-                myShape.Fields.Add("DateField", eFieldType.shpDate)
-                myShape.Fields.Add("FloatField", eFieldType.shpFloat)
-                myShape.WriteFieldDefs()
-            
-                myShape.RetainData = True
-                myShape.Vertices.Add(1, 1)
-                myShape.Fields(0).Value = "First"
-                myShape.Fields(1).Value = 1.23
-                myShape.Fields(2).Value = DateTime.Now
-                myShape.Fields(3).Value = 0.0000123
-                myShape.WriteShape()
-            
-                myShape.Vertices.Add(1, 10)
-                myShape.Fields(0).Value = "Second"
-                myShape.WriteShape()
-            
-                myShape.RetainData = False
-                myShape.Vertices.Add(10, 10)
-                myShape.Fields(0).Value = "Third"
-                myShape.Fields(1).Value = 2.34
-                myShape.Fields(2).Value = DateTime.Now
-                myShape.Fields(3).Value = 0.0000234
-                myShape.WriteShape()
-            End Using
-            </code>
-            </example>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.ReadMode">
-             <summary>
-             The ReadMode property allows you to turn on or off the automatic loading of ShapeFile 
-             vertice and database information. Setting this to HeaderOnly can be handy when you don't 
-             want the overhead of reading all the shape information, but want to test the bounds or database 
-             information separately
-             </summary>
-             <value>How do you want the record to be read</value>
-            <remarks>
-            <para>Set this property before any move action to change the way the DLL loads the data.  The question really is - When to use what method.
-            Let's see.  FullRead loads all the data into the Vertices and Fields collections. The upside of this is that it is easy to then manipulate all the data for the ShapeFile. The downside is that it does take time to load the data into the collections. This may be a real headache if you are reading a record with a large number of vertices.
-            So ... If you're loading a ShapeFile and want to scan through to find a particular condition then HeaderOnly might be the one to use.</para>
-            <para>HeaderOnly mode reads in the MBR values of the Vertices (including the how many vertices there are) but doesn't load any of the data into the collections.  This makes it fast to scan through all the records.
-            When you want to see the contents of a particular record then you can load the Vertice data using the <see cref="M:ArcShapeFile.ShapeFile.LoadShapeData"/> method and/or the database values into Fields using the <see cref="M:ArcShapeFile.ShapeFile.LoadDBFData"/> method.</para>
-            <para>If you want the best of both worlds use my personal favourite - FastRead.  This method loads all the record metadata (number of points, number of parts, the MBRs), populates the Fields collection with the database attributes, but holds all the vertice data in an internal byte array.  Everytime you read a vertice the DLL scans the array for the correct byte offset.  
-            What it doesn't do is caluclate centroids, areas and test for holes.</para>
-            <para>So how fast are the various methods?  Here are some results reading the vertices from a polyline shapefile with 688,354 records.
-            <list type="table">
-                <listheader>
-                    <term>ReadMode</term>
-                    <description>Description</description>
-                    <unlock>Files Unlocked Speed</unlock>
-                    <lock>Files Locked Speed</lock>
-                </listheader>
-                <item>
-                    <term>FullRead</term>
-                    <description>The Field and Vertice collections, MBR, Number of points, centroids etc. are populated</description>
-                    <unlock>394,279ms</unlock>
-                    <lock>14,264ms</lock>
-                </item>
-                <item>
-                    <term>FastRead</term>
-                    <description>The Field collections, MBR and Number of points are populated</description>
-                    <unlock>380,155ms</unlock>
-                    <lock>9,919ms</lock>
-                </item>
-                <item>
-                    <term>HeaderOnly</term>
-                    <description>The MBR and Number of points are populated.  A separate call is required to load the Fields or Vertices</description>
-                    <unlock>153,254ms</unlock>
-                    <lock>8,112ms</lock>
-                </item>
-             </list>
-             Note that the best results are achieved when you <see cref="O:ArcShapeFile.ShapeFile.Open">Open</see> your ShapeFile with the Lock parameter set to True.
-            </para>
-            </remarks>
-             <seealso cref="M:ArcShapeFile.ShapeFile.LoadDBFData"/>
-             <seealso cref="M:ArcShapeFile.ShapeFile.LoadShapeData"/>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.ShapeFileName">
-             <summary>
-             Returns the pathname of the currently opened ShapeFile
-             </summary>
-            <value>The name of the ShapeFile</value>
-            <remarks>
-            This property is read only and is set by using the <see cref="O:ArcShapeFile.ShapeFile.Open"/> method.
-            Just a pointer here: ShapeFiles really consist of a geometry file (.SHP) and index file (.SHX) and a database file (.DBF).  Other extensions are used in the ARCGIS envirnoment that may be included in a delivery, but these aren't used by this DLL.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.ShapeType">
-             <summary>
-             Returns the type of the current record of the opened ShapeFile
-             </summary>
-             <value>The eNum of the ShapeType</value>
-            <remarks>
-            There can only be one ShapeType per ShapeFile. Well ... not strictly true ... You can also have Null Shapes. ESRI have yet to implement multiple ShapeTypes within a Shapefile. The White Paper on Shapefiles suggests that this is a future implementation, but nothing has happened in the last 25 years so I wouldn't hold my breath.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.CreateEmpty">
-             <summary>
-             Gets or Sets the ability of the Open command to create a NULL record when a new ShapeFile is created.
-             This acts as a place holder and allows the empty Shapefile to be read by other applications.
-             </summary>
-             <value>Will the ShapeFile be created empty (Default = True)</value>
-            <remarks>
-            This property was added because a user of the VB DLL was creating ShapeFiles and then loading them in other apps to add data.
-            Because the programs were reading the number of records from the DBF file the app threw a wobbly when it encounter no records (go figure) ... so ...
-            This property allows you to create a new ShapeFile that either has a null shape added to the bottom ( value = False ) or completely empty ( default value = True).
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.Vertices">
-            <summary>
-             Returns the Vertices collection associated with current ShapeFile Record
-            </summary>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.Parts">
-            <summary>
-             Returns the Parts collection associated with current ShapeFile Record
-            </summary>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.Fields">
-            <summary>
-             Returns the Fields collection associated with current ShapeFile Record
-            </summary>
-            <remarks>The Fields collection represents the attributes held within the DBF file associated with the ShapeFile.</remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.Projection">
-            <summary>
-            The Projection and Datum info of the ShapeFile
-            </summary>
-            <remarks>I created the Projection class to hold all the details found within the .PRJ file.  To write a projection file use <see cref="O:ArcShapeFile.ShapeFile.WriteProjection">WriteProjection</see>.  </remarks>
-        </member>
-        <member name="P:ArcShapeFile.ShapeFile.IsRecordNull">
-             <summary>
-             Returns true if the current record is a null shape
-             </summary>
-             <value>Is the current record null</value>
-            <remarks>
-            NULL shape records are often used as place holders in the ShapeFile or, in the case of this DLL, as an indicator that the current record has been marked for deletion.
-            This is the only time that you can have more than one shape type within one ShapeFile.  NULL shapes take up space in the file, but their contents are skip over.  To really remove these beasties you should <see cref="M:ArcShapeFile.ShapeFile.Pack"/> the file.
-            </remarks>
-        </member>
-        <member name="E:ArcShapeFile.ShapeFile.ShapeRecordCreated">
-            <summary>
-            Event raised when a new record is added to the ShapeFile
-            </summary>
-            <remarks>
-            Fired during a <see cref="M:ArcShapeFile.ShapeFile.WriteShape"/> command, this event will tell you when a record has been added to the ShapeFile.
-            </remarks>
-        </member>
-        <member name="E:ArcShapeFile.ShapeFile.ShapeRecordDeleted">
-            <summary>
-            Event raised when a record is deleted from the ShapeFile
-            </summary>
-            <remarks>
-            Fired during a <see cref="M:ArcShapeFile.ShapeFile.DeleteShape"/> command, this event will tell you when a record has been marked for deletion in the ShapeFile.
-            </remarks>
-        </member>
-        <member name="E:ArcShapeFile.ShapeFile.ShapeFileOpened">
-            <summary>
-            Event raised when a ShapeFile has been opened
-            </summary>
-            <remarks>
-            OK ... Paranoia rules ... but sometimes you might want to log what ShapeFile has been opened and how.  This event is fired by the <see cref="M:ArcShapeFile.ShapeFile.Open(System.String)"/> method and will tell you just that.
-            </remarks>
-        </member>
-        <member name="E:ArcShapeFile.ShapeFile.ShapeRecordModified">
-            <summary>
-            Event raised when a ShapeFile has been modified
-            </summary>
-            <remarks>
-            Fired during a <see cref="M:ArcShapeFile.ShapeFile.ModifyShape"/> command, this event will tell you what part of the ShapeFile has been changed - the fields or the vertices.
-            It gets fired when the Vertices and/or Fields have been updated
-            </remarks>
-        </member>
-        <member name="E:ArcShapeFile.ShapeFile.ShapeFilePacked">
-            <summary>
-            Event raised when the ShapeFile has been packed
-            </summary>
-            <remarks>
-            No event arguments with this one ... It just fires any time the <see cref="M:ArcShapeFile.ShapeFile.Pack"/> command is given.
-            </remarks>
-        </member>
-        <member name="T:ArcShapeFile.ShapeFile.ShapeCreatedEventHandler">
-            <summary>
-            Raised when the ShapeFile record has been created
-            </summary>
-            <param name="e">The record number of the created record</param>
-            <remarks>
-            Fired during a <see cref="M:ArcShapeFile.ShapeFile.WriteShape"/> command, this event will tell you when a record has been added to the ShapeFile using this DLL.  I envisaged using this
-            event to log when a user adds a new record.
-            </remarks>
-        </member>
-        <member name="T:ArcShapeFile.ShapeFile.ShapeDeletedEventHandler">
-            <summary>
-            Raised when the ShapeFile record has been deleted
-            </summary>
-            <param name="e">The record number of the deleted record</param>
-            <remarks>
-            Fired during a <see cref="M:ArcShapeFile.ShapeFile.DeleteShape"/> command, this event will tell you when a record has been marked for deletion in the ShapeFile.
-            </remarks>
-        </member>
-        <member name="T:ArcShapeFile.ShapeFile.ShapeOpenedEventHandler">
-            <summary>
-            Raised when the ShapeFile has been opened
-            </summary>
-            <param name="e">The name of the opened ShapeFile, the Reading Mode  (Header Only, Fast Read) and whether the files are locked</param>
-        </member>
-        <member name="T:ArcShapeFile.ShapeFile.ShapeModifiedEventHandler">
-            <summary>
-            Raised when the ShapeFile record has been modified
-            </summary>
-            <param name="e">The record number of the modified record and the modified scope - Vertice or Field change</param>
-            <remarks>
-            Fired during a <see cref="M:ArcShapeFile.ShapeFile.ModifyShape"/> command, this event will tell you what part of the ShapeFile has been changed - the fields or the vertices.
-            It gets fired when the Vertices and/or Fields have been updated
-            </remarks>
-        </member>
-        <member name="T:ArcShapeFile.ShapeFile.ShapePackedEventHandler">
-            <summary>
-            Raised when the ShapeFile has been packed
-            </summary>
-            <remarks>
-            No event arguments with this one ... It just fires any time the <see cref="M:ArcShapeFile.ShapeFile.Pack"/> command is given.
-            </remarks>
         </member>
         <member name="T:ArcShapeFile.ShapeFileEventArgs">
             <summary>
@@ -9687,6 +9706,159 @@
             <li>Iteration by reference - i.e. foreach(Vertice vt in shp.Vertices)</li>
             </ul>
              </para></remarks>
+        </member>
+        <member name="T:ArcShapeFile.Vertices.AddVertHandler">
+            <summary>
+            A handler to trap vertices being added
+            </summary>
+            <param name="e">The parsed vertice event arguments</param>
+        </member>
+        <member name="E:ArcShapeFile.Vertices.VerticeAdded">
+             <summary>
+             The event fired each time a vertice is added to the collection 
+             </summary>
+             <remarks>
+             This event allows you to track when a Vertice has been added.  The arguments passed by the event are:
+            <list type="table">
+                <listheader>
+                    <term>Argument</term>
+                    <description>Description</description>
+                </listheader>
+                <item>
+                    <term>VerticeNo</term>
+                    <description>the ordinal position of the inserted Vertice</description>
+                </item>
+                <item>
+                    <term>=Insert;</term>
+                    <description>>A boolean value indicating whether the Vertice has been inserted rather than appended to the bottom</description>
+                </item>
+            </list>
+             </remarks>
+        </member>
+        <member name="T:ArcShapeFile.Vertices.DelVertHandler">
+            <summary>
+            A handler to trap vertices being deleted
+            </summary>
+            <param name="e">The parsed vertice event arguments</param>
+        </member>
+        <member name="E:ArcShapeFile.Vertices.VerticeDeleted">
+             <summary>
+             The event fired each time a vertice is deleted from the collection 
+             </summary>
+             <remarks>
+             This event allows you to track when a Vertice has been removed.  The arguments passed by the event are:
+            <list type="table">
+                <listheader>
+                    <term>Argument</term>
+                    <description>Description</description>
+                </listheader>
+                <item>
+                    <term>VerticeNo</term>
+                    <description>the ordinal position of the removed Vertice (prior to removal of course)</description>
+                </item>
+            </list>
+             </remarks>
+        </member>
+        <member name="T:ArcShapeFile.Vertices.AddPartHandler">
+            <summary>
+            A handler to trap parts being added
+            </summary>
+            <param name="e">The parsed part event arguments</param>
+        </member>
+        <member name="E:ArcShapeFile.Vertices.PartAdded">
+            <summary>
+            The event fired each time a part is added to the collection 
+            </summary>
+        </member>
+        <member name="E:ArcShapeFile.Vertices.VerticesCleared">
+            <summary>
+            Event to signify that all vertices have been cleared
+            </summary>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.Item(System.Int32)">
+            <summary>
+            Grabs the coordinate vertice from the collection
+            </summary>
+            <param name="Index">The index number of the vertice</param>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.Count">
+            <summary>
+            Returns the number of vertices in the current record
+            </summary>
+            <remarks>
+            You can use this property to mark the maximum value of any loop iterating through the collection.  Items in this collection can be indexed from 0 to 1 - the returned value.
+            Remember that Vertices can have multiple parts to them so iterating from the Part.<see cref="P:ArcShapeFile.Part.Begins">Begins</see> to Part.<see cref="P:ArcShapeFile.Part.Ends">Ends</see> might be a better idea.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.NoOfPoints">
+            <summary>
+            Gets the number of points the the current record
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.xMin">
+            <summary>
+            The minimimum X value for the current ShapeFile record
+            </summary>
+            <remarks>
+            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.xMax">
+            <summary>
+            The maximimum X value for the current ShapeFile record
+            </summary>
+            <remarks>
+            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.yMin">
+            <summary>
+            The minimimum Y value for the current ShapeFile record
+            </summary>
+            <remarks>
+            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.yMax">
+            <summary>
+            The maximimum Y value for the current ShapeFile record
+            </summary>
+            <remarks>
+            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.mMin">
+            <summary>
+            The maximimum X value for the current ShapeFile record
+            </summary>
+            <remarks>
+            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.mMax">
+            <summary>
+            The minimimum non-null measure value for the current ShapeFile record
+            </summary>
+            <remarks>
+            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value may be null and populated only for shapes in X,Y,Z space or Measured X,Y space.
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.zMin">
+            <summary>
+            The minimimum non-null Z value for the current ShapeFile record
+            </summary>
+            <remarks>
+            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value is populated only for shapes in X,Y,Z space and will be null otherwise
+            </remarks>
+        </member>
+        <member name="P:ArcShapeFile.Vertices.zMax">
+            <summary>
+            The maximimum Z value for the current ShapeFile record
+            </summary>
+            <remarks>
+            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value is populated only for shapes in X,Y,Z space and will be null otherwise
+            </remarks>
         </member>
         <member name="M:ArcShapeFile.Vertices.RemoveAt(System.Int32)">
             <summary>
@@ -9885,159 +10057,6 @@
             </summary>
             <param name="WKB">The Well Known Binary array.</param>
         </member>
-        <member name="E:ArcShapeFile.Vertices.VerticeAdded">
-             <summary>
-             The event fired each time a vertice is added to the collection 
-             </summary>
-             <remarks>
-             This event allows you to track when a Vertice has been added.  The arguments passed by the event are:
-            <list type="table">
-                <listheader>
-                    <term>Argument</term>
-                    <description>Description</description>
-                </listheader>
-                <item>
-                    <term>VerticeNo</term>
-                    <description>the ordinal position of the inserted Vertice</description>
-                </item>
-                <item>
-                    <term>=Insert;</term>
-                    <description>>A boolean value indicating whether the Vertice has been inserted rather than appended to the bottom</description>
-                </item>
-            </list>
-             </remarks>
-        </member>
-        <member name="E:ArcShapeFile.Vertices.VerticeDeleted">
-             <summary>
-             The event fired each time a vertice is deleted from the collection 
-             </summary>
-             <remarks>
-             This event allows you to track when a Vertice has been removed.  The arguments passed by the event are:
-            <list type="table">
-                <listheader>
-                    <term>Argument</term>
-                    <description>Description</description>
-                </listheader>
-                <item>
-                    <term>VerticeNo</term>
-                    <description>the ordinal position of the removed Vertice (prior to removal of course)</description>
-                </item>
-            </list>
-             </remarks>
-        </member>
-        <member name="E:ArcShapeFile.Vertices.PartAdded">
-            <summary>
-            The event fired each time a part is added to the collection 
-            </summary>
-        </member>
-        <member name="E:ArcShapeFile.Vertices.VerticesCleared">
-            <summary>
-            Event to signify that all vertices have been cleared
-            </summary>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.Item(System.Int32)">
-            <summary>
-            Grabs the coordinate vertice from the collection
-            </summary>
-            <param name="Index">The index number of the vertice</param>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.Count">
-            <summary>
-            Returns the number of vertices in the current record
-            </summary>
-            <remarks>
-            You can use this property to mark the maximum value of any loop iterating through the collection.  Items in this collection can be indexed from 0 to 1 - the returned value.
-            Remember that Vertices can have multiple parts to them so iterating from the Part.<see cref="P:ArcShapeFile.Part.Begins">Begins</see> to Part.<see cref="P:ArcShapeFile.Part.Ends">Ends</see> might be a better idea.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.NoOfPoints">
-            <summary>
-            Gets the number of points the the current record
-            </summary>
-            <value></value>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.xMin">
-            <summary>
-            The minimimum X value for the current ShapeFile record
-            </summary>
-            <remarks>
-            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.xMax">
-            <summary>
-            The maximimum X value for the current ShapeFile record
-            </summary>
-            <remarks>
-            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.yMin">
-            <summary>
-            The minimimum Y value for the current ShapeFile record
-            </summary>
-            <remarks>
-            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.yMax">
-            <summary>
-            The maximimum Y value for the current ShapeFile record
-            </summary>
-            <remarks>
-            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.mMin">
-            <summary>
-            The maximimum X value for the current ShapeFile record
-            </summary>
-            <remarks>
-            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value and is popoulated for all shape types.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.mMax">
-            <summary>
-            The minimimum non-null measure value for the current ShapeFile record
-            </summary>
-            <remarks>
-            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value may be null and populated only for shapes in X,Y,Z space or Measured X,Y space.
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.zMin">
-            <summary>
-            The minimimum non-null Z value for the current ShapeFile record
-            </summary>
-            <remarks>
-            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value is populated only for shapes in X,Y,Z space and will be null otherwise
-            </remarks>
-        </member>
-        <member name="P:ArcShapeFile.Vertices.zMax">
-            <summary>
-            The maximimum Z value for the current ShapeFile record
-            </summary>
-            <remarks>
-            Part of the ShapeFile record minimum bounding values for the current ShapeFile record, this value is populated only for shapes in X,Y,Z space and will be null otherwise
-            </remarks>
-        </member>
-        <member name="T:ArcShapeFile.Vertices.AddVertHandler">
-            <summary>
-            A handler to trap vertices being added
-            </summary>
-            <param name="e">The parsed vertice event arguments</param>
-        </member>
-        <member name="T:ArcShapeFile.Vertices.DelVertHandler">
-            <summary>
-            A handler to trap vertices being deleted
-            </summary>
-            <param name="e">The parsed vertice event arguments</param>
-        </member>
-        <member name="T:ArcShapeFile.Vertices.AddPartHandler">
-            <summary>
-            A handler to trap parts being added
-            </summary>
-            <param name="e">The parsed part event arguments</param>
-        </member>
         <member name="T:ArcShapeFile.AddVertArgs">
             <summary>
             Parses the Part Number and the Vertice Index of a newly inserted Vertices collection record
@@ -10105,11 +10124,22 @@
             <para>Anyway  ... it seems to work</para>
             </summary>
         </member>
+        <member name="P:ArcShapeFile.WKTReader.Nodes">
+            <summary>
+            The collection of individual nodes from the WKT input
+            </summary>
+        </member>
         <member name="M:ArcShapeFile.WKTReader.Read(System.String)">
             <summary>
             Opens the WKT file and loads all the data into the reader's nodes
             </summary>
             <param name="filename">The name of the WKT file to load</param>
+        </member>
+        <member name="M:ArcShapeFile.WKTReader.LoadWKT(System.String)">
+            <summary>
+            Load all the data directly from a WKT string
+            </summary>
+            <param name="inData"></param>
         </member>
         <member name="M:ArcShapeFile.WKTReader.GetNodesbyName(System.String,System.String,System.String)">
             <summary>
@@ -10176,11 +10206,6 @@
             Gets an attribute name for a particular Tag
             </summary>
             <param name="TagName">"The name of the Tag (e.g. DATUM)</param>
-        </member>
-        <member name="P:ArcShapeFile.WKTReader.Nodes">
-            <summary>
-            The collection of individual nodes from the WKT input
-            </summary>
         </member>
         <member name="T:ArcShapeFile.WKTNodes">
             <summary>
