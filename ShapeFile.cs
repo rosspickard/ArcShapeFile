@@ -4575,29 +4575,29 @@ namespace ArcShapeFile
     {
         ///<summary>Greenwich Prime Meridian</summary>
         Greenwich = 8901,
-        ///<summary>Athens Prime Meridian 23°25'33.17" E</summary>
+        ///<summary>Athens Prime Meridian 23Â°25'33.17" E</summary>
         Athens = 8912,
-        ///<summary>Bern Prime Meridian 7°15'44.1" E</summary>
+        ///<summary>Bern Prime Meridian 7Â°15'44.1" E</summary>
         Bern = 8907,
-        ///<summary>Bogota Prime Meridian 74°2'42.47" W</summary>
+        ///<summary>Bogota Prime Meridian 74Â°2'42.47" W</summary>
         Bogota = 8904,
-        ///<summary>Brussels Prime Meridian 4°13'13.7" E</summary>
+        ///<summary>Brussels Prime Meridian 4Â°13'13.7" E</summary>
         Brussels = 8910,
-        ///<summary>Ferro Prime Meridian 17°24'0" W </summary>
+        ///<summary>Ferro Prime Meridian 17Â°24'0" W </summary>
         Ferro = 8909,
-        ///<summary>Jakarta Prime Meridian 106°28'58" E</summary>
+        ///<summary>Jakarta Prime Meridian 106Â°28'58" E</summary>
         Jakarta = 8908,
-        ///<summary>Lisbon Prime Meridian 9°4'31.75" W</summary>
+        ///<summary>Lisbon Prime Meridian 9Â°4'31.75" W</summary>
         Lisbon = 8902,
-        ///<summary>Madrid Prime Meridian 3°24'41.97" W</summary>
+        ///<summary>Madrid Prime Meridian 3Â°24'41.97" W</summary>
         Madrid = 8905,
-        ///<summary>Oslo Prime Meridian 10°25'56.1" E </summary>
+        ///<summary>Oslo Prime Meridian 10Â°25'56.1" E </summary>
         Oslo = 8913,
-        ///<summary>Paris Prime Meridian 2°20'14.025" W</summary>
+        ///<summary>Paris Prime Meridian 2Â°20'14.025" W</summary>
         Paris = 8903,
-        ///<summary>Rome Prime Meridian 2°12'5.02" E" E</summary>
+        ///<summary>Rome Prime Meridian 2Â°12'5.02" E" E</summary>
         Rome = 8906,
-        ///<summary>Stockholm Prime Meridian 18°1'58.73" E </summary>
+        ///<summary>Stockholm Prime Meridian 18Â°1'58.73" E </summary>
         Stockholm = 8911
     }
 
@@ -12417,7 +12417,10 @@ namespace ArcShapeFile
                                 DataValue = DataValue + "+";
                             else
                                 DataValue = DataValue + "-";
-                            DataValue = DataValue + (System.Math.Abs(DecimalLength)).ToString("000");
+                            if(DataValue.StartsWith(" -"))
+                                DataValue = DataValue + (System.Math.Abs(DecimalLength-1)).ToString("000");
+                            else
+                                DataValue = DataValue + (System.Math.Abs(DecimalLength)).ToString("000");
                             DataValue = DataValue.PadLeft(mField.Size, ' ');
 
                             break;
