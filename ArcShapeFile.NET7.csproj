@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<Version>8.0.5027</Version>
+		<SignAssembly>True</SignAssembly>
+		<AssemblyOriginatorKeyFile>ArcShapeFile.snk</AssemblyOriginatorKeyFile>
+		<ApplicationIcon>ShapeOCX.ico</ApplicationIcon>
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="ESRIGeo.txt" />
+	  <None Remove="ESRIProj.txt" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="ShapeOCX.ico" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="ESRIGeo.txt" />
+	  <EmbeddedResource Include="ESRIProj.txt" />
+	</ItemGroup>
+</Project>

@@ -222,5 +222,8 @@ namespace ArcShapeFile
 
         #endregion
 
+        public string WKT { get; set; } = string.Empty;
+
+        public int EPSG { get; set; }
     }
 }

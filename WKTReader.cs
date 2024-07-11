@@ -441,7 +441,10 @@ namespace ArcShapeFile
             return RetString;
         }
 
-
+        public void LoadWKT(string wkt)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 
     /// <summary>
